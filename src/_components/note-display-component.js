@@ -7,25 +7,23 @@ require('./note-display.css');
 export default function NoteDisplay(props) {
   // list of note positions
   const notes = {
-    a: 367,
-    b: 390,
-    c: 230,
-    d: 270,
-    e: 295,
-    f: 319,
-    g: 345,
-    E: 463,
-    F: 490,
-  }
+    A: 367,
+    B: 390,
+    C: 230,
+    D: 270,
+    E: 295,
+    F: 319,
+    G: 345,
+  };
 
   const updateNote = (value) => {
     return notes[value];
-  }
+  };
 
   return (
     <div className="note-display-container">
       <img id="sheet-img" src={staff} alt="notation background" />
-      <img style={{bottom: updateNote(props.note)}} id="note-img" src={note} alt="note" />
+      <img style={{ bottom: updateNote(props.note) }} id="note-img" src={note} alt="note" />
     </div>
   );
 }

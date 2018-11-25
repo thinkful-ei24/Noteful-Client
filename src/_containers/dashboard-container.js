@@ -6,38 +6,46 @@ import DashNavigation from '../_components/dashNavigation-component';
 import Keyboard from '../_components/keyboard-component';
 import Feedback from '../_components/feedback-component';
 import NoteDisplay from '../_components/note-display-component';
+import { fetchNote } from '../_actions/notes-action';
 
-const Dashboard = props => {
-  if (!props.loggedIn) {
-    return <Redirect to="/" />;
+class Dashboard extends React.Component {
+  componentDidMount() {
+    if (!this.props.noteDisplayed) {
+      this.props.dispatch(fetchNote());
+    }
   }
 
-  //function to handle logic of feedback
-  // if props.noteDisplayed === props.selectedKey
-  // variable message = you're correct
-  // else variable message = Oops, the correct answer is props.noteDisplayed
+  render() {
+    if (!this.props.loggedIn) {
+      return <Redirect to="/" />;
+    }
 
-  console.log(props.noteDisplayed);
-  return (
-    <div className="dashboard">
-      <DashNavigation />
-      <div className="dashboard-container">
-        {/* <Feedback
+    //function to handle logic of feedback
+    // if props.noteDisplayed === props.selectedKey
+    // variable message = you're correct
+    // else variable message = Oops, the correct answer is props.noteDisplayed
+
+    return (
+      <div className="dashboard">
+        <DashNavigation />
+        <div className="dashboard-container">
+          {/* <Feedback
           message={`Hello, ${props.user.name}!`}
           feedbackType="general"
           guessCount="5"
         />
         <Feedback message={`You're correct!`} feedbackType="correctGuess" /> */}
-        <Feedback
-          message={`Oops, the correct answer is `}
-          feedbackType="incorrectGuess"
-        />
-        <NoteDisplay note={props.noteDisplayed} />
-        <Keyboard />
+          <Feedback
+            message={'Oops, the correct answer is '}
+            feedbackType="incorrectGuess"
+          />
+          <NoteDisplay note={this.props.noteDisplayed} />
+          <Keyboard />
+        </div>
       </div>
-    </div>
-  );
-};
+    );
+  }
+}
 
 const mapStateToProps = state => ({
   loggedIn: state.auth.user !== null,
