@@ -13,17 +13,22 @@ export default function NoteDisplay(props) {
     D: 270,
     E: 295,
     F: 319,
-    G: 345,
+    G: 345
   };
 
-  const updateNote = (value) => {
+  const updateNote = value => {
     return notes[value];
   };
 
   return (
     <div className="note-display-container">
       <img id="sheet-img" src={staff} alt="notation background" />
-      <img style={{ bottom: updateNote(props.note) }} id="note-img" src={note} alt="note" />
+      <img
+        style={{ bottom: updateNote(props.note) }}
+        id="note-img"
+        src={note}
+        alt="note"
+      />
     </div>
   );
 }
