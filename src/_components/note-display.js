@@ -12,15 +12,13 @@ export default function NoteDisplay() {
 
   // list of note positions
   const notes = {
-    a: 367,
-    b: 390,
-    c: 230,
-    d: 270,
-    e: 295,
-    f: 319,
-    g: 345,
-    E: 463,
-    F: 490
+    A: 367,
+    B: 390,
+    C: 230,
+    D: 270,
+    E: 295,
+    F: 319,
+    G: 345
   };
 
   // call to update position

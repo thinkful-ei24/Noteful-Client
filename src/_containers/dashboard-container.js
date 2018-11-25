@@ -6,8 +6,14 @@ import DashNavigation from '../_components/dashNavigation-component';
 import Keyboard from '../_components/keyboard-component';
 import Feedback from '../_components/feedback-component';
 import NoteDisplay from '../_components/note-display-component';
+import { fetchNote } from '../_actions/notes-action';
 
 class Dashboard extends React.Component {
+  componentDidMount() {
+    if (!this.props.noteDisplayed) {
+      this.props.dispatch(fetchNote());
+    }
+  }
   render() {
     if (!this.props.loggedIn) {
       return <Redirect to="/" />;
@@ -40,12 +46,6 @@ class Dashboard extends React.Component {
       <div className="dashboard">
         <DashNavigation />
         <div className="dashboard-container">
-          {/* <Feedback
-            message={`Hello, ${props.user.name}!`}
-            feedbackType="general"
-            guessCount="5"
-          />
-          <Feedback message={`You're correct!`} feedbackType="correctGuess" /> */}
           <Feedback message={feedbackMessage} feedbackType={feedbackType} />
           <NoteDisplay note={this.props.noteDisplayed} />
           <Keyboard />
