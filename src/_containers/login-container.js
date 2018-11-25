@@ -1,10 +1,9 @@
 import React from 'react';
-import { reduxForm, Field } from 'redux-form';
+import { reduxForm, Field, focus } from 'redux-form';
 import { connect } from 'react-redux';
 import { Redirect } from 'react-router-dom';
 import Input from '../_components/input-component';
 import Navigation from '../_components/navigation-component';
-import Dashboard from '../_containers/dashboard-container';
 import { login } from '../_actions/auth-action';
 
 require('./login-container.css');
@@ -12,7 +11,6 @@ require('./login-container.css');
 export function LoginForm(props) {
   let nav;
   if (props.loggedIn) {
-    // nav = <DashNav />;
     return <Redirect to="/dashboard" />;
   } else {
     nav = <Navigation />;
@@ -23,9 +21,7 @@ export function LoginForm(props) {
       {nav}
       <form
         className="login-form"
-        onSubmit={props.handleSubmit(values => {
-          props.dispatch(login(values));
-        })}
+        onSubmit={props.handleSubmit(values => props.dispatch(login(values)))}
         aria-label={'login form'}
       >
         <Field
@@ -58,5 +54,7 @@ const mapStateToProps = state => ({
 });
 
 export default reduxForm({
-  form: 'login'
+  form: 'login',
+  onSubmitFail: (errors, dispatch) => 
+    dispatch(focus('login', 'username'))
 })(connect(mapStateToProps)(LoginForm));
