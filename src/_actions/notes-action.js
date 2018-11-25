@@ -17,10 +17,9 @@ export const fetchNoteRequest = () => ({
 });
 
 export const FETCH_NOTE_SUCCESS = 'FETCH_NOTE_SUCCESS';
-export const fetchNoteSuccess = (note, next) => ({
+export const fetchNoteSuccess = note => ({
   type: FETCH_NOTE_SUCCESS,
-  note,
-  next
+  note
 });
 
 export const FETCH_NOTE_FAILURE = 'FETCH_NOTE_FAILURE';
@@ -41,6 +40,48 @@ export const fetchNote = cardId => (dispatch, getState) => {
     }
   })
     .then(res => res.json())
-    .then(note => dispatch(fetchNoteSuccess(note.note, note.next)))
+    .then(note => dispatch(fetchNoteSuccess(note)))
     .catch(err => dispatch(fetchNoteFailure(err)));
+};
+
+
+export const UPDATE_NOTE_REQUEST = 'UPDATE_NOTE_REQUEST';
+export const updateNoteRequest = () => ({
+  type: UPDATE_NOTE_REQUEST
+});
+
+export const UPDATE_NOTE_SUCCESS = 'UPDATE_NOTE_SUCCESS';
+export const updateNoteSuccess = () => ({
+  type: UPDATE_NOTE_SUCCESS
+});
+
+export const UPDATE_NOTE_FAILURE = 'UPDATE_NOTE_FAILURE';
+export const updateNoteFailure = () => ({
+  type: UPDATE_NOTE_FAILURE
+});
+
+export const updateNote = isCorrect => (dispatch, getState) => {
+  dispatch(updateNoteRequest());
+  const authToken = getState().auth.authToken;
+  const card = getState().note.currentNote;
+  card.total += 1;
+
+  if (isCorrect) {
+    card.memory *= 2;
+    card.correct += 1;
+  } else {
+    card.memory = 1;
+  }
+
+  return fetch(`${API_BASE_URL}/cards/${card.id}`, {
+    method: 'PATCH',
+    headers: {
+      Authorization: `Bearer ${authToken}`,
+      'content-Type': 'application/json'
+    },
+    body: JSON.stringify(card)
+  })
+    .then(res => res.json())
+    .then(note => dispatch(updateNoteSuccess(note)))
+    .catch(err => dispatch(updateNoteFailure(err)));
 };

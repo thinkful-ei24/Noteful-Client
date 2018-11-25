@@ -1,12 +1,20 @@
-import { SELECT_KEY, UPDATE_KEYBOARD,FETCH_NOTE_REQUEST,
+import {
+  SELECT_KEY,
+  UPDATE_KEYBOARD,
+  FETCH_NOTE_REQUEST,
   FETCH_NOTE_SUCCESS,
-  FETCH_NOTE_FAILURE } from '../_actions/notes-action';
+  FETCH_NOTE_FAILURE,
+  UPDATE_NOTE_REQUEST,
+  UPDATE_NOTE_SUCCESS,
+  UPDATE_NOTE_FAILURE
+} from '../_actions/notes-action';
 
 const initialState = {
   selectedKey: null,
   keyboardDisabled: false,
   noteDisplayed: null,
   nextNote: null,
+  currentNote: null,
   loading: false,
   error: null
 };
@@ -31,10 +39,27 @@ export const noteReducer = (state = initialState, action) => {
     return Object.assign({}, state, {
       loading: false,
       error: null,
-      noteDisplayed: action.note,
-      nextNote: action.next
+      noteDisplayed: action.note.note,
+      nextNote: action.note.next,
+      currentNote: action.note
     });
   } else if (action.type === FETCH_NOTE_FAILURE) {
+    return Object.assign({}, state, {
+      loading: false,
+      error: action.error
+    });
+  }
+
+  if (action.type === UPDATE_NOTE_REQUEST) {
+    return Object.assign({}, state, {
+      loading: true
+    });
+  } else if (action.type === UPDATE_NOTE_SUCCESS) {
+    return Object.assign({}, state, {
+      loading: false,
+      error: null,
+    });
+  } else if (action.type === UPDATE_NOTE_FAILURE) {
     return Object.assign({}, state, {
       loading: false,
       error: action.error

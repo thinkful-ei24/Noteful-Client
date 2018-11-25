@@ -30,7 +30,7 @@ class Dashboard extends React.Component {
       feedbackMessage = `Hello, ${this.props.user.name}`;
       feedbackType = 'general';
     } else if (this.props.noteDisplayed === this.props.selectedKey) {
-      feedbackMessage = `You're correct!`;
+      feedbackMessage = 'You\'re correct!';
       feedbackType = 'correctGuess';
     } else {
       feedbackMessage = `Oops, the correct answer is ${
