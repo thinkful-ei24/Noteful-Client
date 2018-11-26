@@ -7,11 +7,11 @@ require('./login-container.css');
 
 export function LoginForm(props) {
   let nav;
-  if (props.loggedIn) {
-    // nav = <DashNavigation />;
-  } else {
-    nav = <Navigation />;
-  }
+  // if (props.loggedIn) {
+  //   // nav = <DashNavigation />;
+  // } else {
+  nav = <Navigation />;
+  // }
 
   return (
     <React.Fragment>
