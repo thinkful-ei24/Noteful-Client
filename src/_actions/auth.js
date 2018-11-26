@@ -1,6 +1,5 @@
 import { jwtDecode } from 'jwt-decode';
 import { SubmissionError } from 'redux-form';
-import SubmissionError from 'redux-form/lib/SubmissionError';
 
 export const SET_AUTH_TOKEN = 'SET_AUTH_TOKEN';
 export const setAuthToken = authToken => ({
