@@ -9,7 +9,7 @@ import Feedback from '../_components/feedback-component';
 import NoteDisplay from '../_components/note-display-component';
 import NextButton from '../_components/next-button-component';
 
-import { fetchNote, updateKeyboard, selectKey, clearNoteDisplayed } from '../_actions/notes-action';
+import { fetchNote } from '../_actions/notes-action';
 import { getCards } from '../_actions/card-actions';
 
 class Dashboard extends React.Component {
