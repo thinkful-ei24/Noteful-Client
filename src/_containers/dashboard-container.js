@@ -23,25 +23,6 @@ class Dashboard extends React.Component {
       return <Redirect to="/" />;
     }
 
-    //logic for displaying the next button
-    let nextButton = this.props.keyboardDisabled ? (
-      <button
-        onClick={() => {
-          //fetch the next note
-          this.props.dispatch(fetchNote(this.props.nextNote));
-          //set the keyboardDisabled back to false in order to display it again
-          this.props.dispatch(updateKeyboard());
-          //reset selectedKey to null after you click next
-          this.props.dispatch(selectKey(null));
-          //clear noteDisplayed
-          this.props.dispatch(clearNoteDisplayed());
-        }}
-      >
-        Next
-      </button>
-    ) : ('');
-    console.log('rerender');
-
     return (
       <div className="dashboard">
         <DashNavigation />
@@ -61,7 +42,6 @@ const mapStateToProps = state => ({
   loggedIn: state.auth.user !== null,
   user: state.auth.user,
   noteDisplayed: state.note.noteDisplayed,
-  keyboardDisabled: state.note.keyboardDisabled,
   nextNote: state.note.nextNote
 });
 
