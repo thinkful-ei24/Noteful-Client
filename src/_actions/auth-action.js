@@ -74,7 +74,6 @@ export const login = values => dispatch => {
       return res.json();
     })
     .then(({ authToken }) => {
-      console.log(authToken);
       storeAuthToken(authToken, dispatch);
     })
     .catch(err => {
