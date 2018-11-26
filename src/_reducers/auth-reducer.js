@@ -4,7 +4,7 @@ import {
   FETCH_AUTH_FAILURE,
   SET_AUTH_TOKEN,
   CLEAR_AUTH_TOKEN
-} from '../_actions/auth';
+} from '../_actions/auth-action';
 
 const initialState = {
   authToken: null,

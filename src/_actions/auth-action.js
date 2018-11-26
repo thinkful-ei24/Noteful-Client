@@ -1,5 +1,6 @@
 import { jwtDecode } from 'jwt-decode';
 import { SubmissionError } from 'redux-form';
+import { API_BASE_URL } from '../config';
 
 export const SET_AUTH_TOKEN = 'SET_AUTH_TOKEN';
 export const setAuthToken = authToken => ({
@@ -29,7 +30,7 @@ export const fetchAuthFailure = () => ({
 
 export const login = values => dispatch => {
   dispatch(fetchAuthRequest());
-  return fetch('API', {
+  return fetch(`${API_BASE_URL}/api/auth/login`, {
     method: 'POST',
     body: JSON.stringify(values),
     headers: {
@@ -65,7 +66,7 @@ export const refreshAuthToken = () => (dispatch, getState) => {
   dispatch(fetchAuthRequest());
   const authToken = getState().auth.authToken;
 
-  return fetch(`${API_URI}/auth/refresh`, {
+  return fetch(`${API_BASE_URL}/api/auth/refresh`, {
     method: 'POST',
     headers: {
         Authorization: `Bearer ${authToken}`
