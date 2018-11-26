@@ -4,7 +4,7 @@ import { connect } from 'react-redux';
 import { Redirect } from 'react-router-dom';
 import Navigation from '../_components/navigation-component';
 import Dashboard from '../_containers/dashboard-container';
-import {login} from '../_actions/auth-action';
+import { login } from '../_actions/auth-action';
 
 require('./login-container.css');
 
@@ -12,9 +12,9 @@ export function LoginForm(props) {
   let nav;
   if (props.loggedIn) {
     // nav = <DashNav />;
-    return <Redirect to='/dashboard' />
+    return <Redirect to="/dashboard" />;
   } else {
-  nav = <Navigation />;
+    nav = <Navigation />;
   }
 
   return (

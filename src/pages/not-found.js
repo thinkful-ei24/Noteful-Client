@@ -14,7 +14,7 @@ const NotFound = props => {
   return (
     <div className="pages secondary">
       {nav}
-      <div class="box">
+      <div className="box">
         <h1>404 Page Not Found!</h1>
       </div>
     </div>

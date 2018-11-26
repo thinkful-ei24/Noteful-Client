@@ -1,10 +1,15 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
+import { Redirect } from 'react-router-dom';
+
 import Navigation from '../_components/navigation-component';
 import Footer from '../_components/footer-component';
 
-export function Home(props) {
+const Home = props => {
+  if (props.loggedIn) {
+    return <Redirect to="/dashboard" />;
+  }
   return (
     <div>
       <Navigation />
@@ -27,8 +32,10 @@ export function Home(props) {
       <Footer />
     </div>
   );
-}
+};
 
-const mapStateToProps = state => ({});
+const mapStateToProps = state => ({
+  loggedIn: state.auth.user !== null
+});
 
 export default connect(mapStateToProps)(Home);

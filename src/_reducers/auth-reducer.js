@@ -10,33 +10,33 @@ const initialState = {
   authToken: null,
   user: null,
   loading: false,
-  error: null,
+  error: null
 };
 
 export const authReducer = (state = initialState, action) => {
   if (action.type === FETCH_AUTH_REQUEST) {
     return Object.assign({}, state, {
-      loading: true,
+      loading: true
     });
   } else if (action.type === FETCH_AUTH_SUCCESS) {
     return Object.assign({}, state, {
       loading: false,
       error: null,
-      user: action.user,
+      user: action.user
     });
   } else if (action.type === FETCH_AUTH_FAILURE) {
     return Object.assign({}, state, {
       loading: false,
-      error: action.error,
+      error: action.error
     });
   } else if (action.type === SET_AUTH_TOKEN) {
     return Object.assign({}, state, {
-      authToken: action.authToken,
+      authToken: action.authToken
     });
   } else if (action.type === CLEAR_AUTH_TOKEN) {
     return Object.assign({}, state, {
       authToken: null,
-      user: null,
+      user: null
     });
   }
   return state;
