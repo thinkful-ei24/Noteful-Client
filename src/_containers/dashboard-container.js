@@ -7,10 +7,10 @@ import Points from '../_components/points-component';
 import Keyboard from '../_components/keyboard-component';
 import Feedback from '../_components/feedback-component';
 import NoteDisplay from '../_components/note-display-component';
+import NextButton from '../_components/next-button-component';
 
-import { fetchNote, updateKeyboard, selectKey } from '../_actions/notes-action';
+import { fetchNote } from '../_actions/notes-action';
 import { getCards } from '../_actions/card-actions';
-import { incrementPoints, decrementPoints } from '../_actions/points-action';
 
 class Dashboard extends React.Component {
   componentDidMount() {
@@ -30,24 +30,6 @@ class Dashboard extends React.Component {
     let feedbackMessage;
     let feedbackType;
 
-    //logic for displaying the next button
-    let nextButton = this.props.keyboardDisabled ? (
-      <button
-        onClick={() => {
-          //fetch the next note
-          this.props.dispatch(fetchNote(this.props.nextNote));
-          //set the keyboardDisabled back to false in order to display it again
-          this.props.dispatch(updateKeyboard());
-          //reset selectedKey to null after you click next
-          this.props.dispatch(selectKey(null));
-        }}
-      >
-        Next
-      </button>
-    ) : (
-      ''
-    );
-
     //if there isn't a selectedKey keep up the hello username message
     if (!this.props.selectedKey) {
       feedbackMessage = `Hello, ${this.props.user.name}`;
@@ -56,7 +38,7 @@ class Dashboard extends React.Component {
     // if the note displayed and pressed are the same increment up a point
     // and  set the feedbackMessage and feedbackType to indicate success
     else if (this.props.noteDisplayed === this.props.selectedKey) {
-      feedbackMessage = "You're correct!";
+      feedbackMessage = 'You\'re correct!';
       feedbackType = 'correctGuess';
     }
     // if the note displayed and pressed are not the same decrement a point
@@ -76,7 +58,7 @@ class Dashboard extends React.Component {
           <Feedback message={feedbackMessage} feedbackType={feedbackType} />
           <NoteDisplay note={this.props.noteDisplayed} />
           <Keyboard />
-          {nextButton}
+          <NextButton />
         </div>
       </div>
     );
@@ -88,7 +70,6 @@ const mapStateToProps = state => ({
   user: state.auth.user,
   noteDisplayed: state.note.noteDisplayed,
   selectedKey: state.note.selectedKey,
-  keyboardDisabled: state.note.keyboardDisabled,
   nextNote: state.note.nextNote
 });
 
