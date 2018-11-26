@@ -1,4 +1,4 @@
-import { jwtDecode } from 'jwt-decode';
+import jwtDecode from 'jwt-decode';
 import { SubmissionError } from 'redux-form';
 import { API_BASE_URL } from '../config';
 
@@ -28,6 +28,32 @@ export const fetchAuthFailure = () => ({
   type: FETCH_AUTH_FAILURE
 });
 
+export const refreshAuthToken = () => (dispatch, getState) => {
+  dispatch(fetchAuthRequest());
+  const authToken = getState().auth.authToken;
+
+  return fetch(`${API_BASE_URL}/auth/refresh`, {
+    method: 'POST',
+    headers: {
+      Authorization: `Bearer ${authToken}`
+    }
+  })
+    .then(res => res.json())
+    .then(({ authToken }) => storeAuthToken(authToken, dispatch))
+    .catch(err => {
+      dispatch(fetchAuthFailure(err));
+      dispatch(clearAuthToken(authToken));
+      localStorage.clear();
+    });
+};
+
+export const storeAuthToken = (authToken, dispatch) => {
+  const decodeToken = jwtDecode(authToken);
+  dispatch(setAuthToken(authToken));
+  dispatch(fetchAuthSuccess(decodeToken.user));
+  localStorage.setItem('authToken', authToken);
+};
+
 export const login = values => dispatch => {
   dispatch(fetchAuthRequest());
 
@@ -38,54 +64,32 @@ export const login = values => dispatch => {
       'content-Type': 'application/json'
     }
   })
-  .then(res => {
-    if (!res.ok) {
-      return Promise.reject({
-        code: res.status,
-        message: res.statusText
-      });
-    }
-    return res.json();
-  })
-  .then(({authToken}) => {
-    storeAuthToken(authToken, dispatch);
-  })
-  .catch(err => {
-    if (err.code === 401) {
-      return Promise.reject(new SubmissionError({
-        _err: 'Incorrect username or password'
-      }));
-    } else {
-      Promise.reject(new SubmissionError({
-        [err.location]: err.message
-      }));
-    }
-  });
-}
-
-export const refreshAuthToken = () => (dispatch, getState) => {
-  dispatch(fetchAuthRequest());
-  const authToken = getState().auth.authToken;
-
-return fetch(`${API_BASE_URL}/auth/refresh`, {
-    method: 'POST',
-    headers: {
-        Authorization: `Bearer ${authToken}`
-    }
-})
-    .then(res => res.json())
-    .then(({authToken}) => storeAuthToken(authToken, dispatch))
+    .then(res => {
+      if (!res.ok) {
+        return Promise.reject({
+          code: res.status,
+          message: res.statusText
+        });
+      }
+      return res.json();
+    })
+    .then(({ authToken }) => {
+      console.log(authToken);
+      storeAuthToken(authToken, dispatch);
+    })
     .catch(err => {
-        dispatch(fetchAuthFailure(err));
-        dispatch(clearAuthToken(authToken));
-        localStorage.clear()
+      if (err.code === 401) {
+        return Promise.reject(
+          new SubmissionError({
+            _err: 'Incorrect username or password'
+          })
+        );
+      } else {
+        Promise.reject(
+          new SubmissionError({
+            [err.location]: err.message
+          })
+        );
+      }
     });
-};
-
-export const storeAuthToken = (authToken, dispatch) => {
-  const decodeToken = jwtDecode(authToken);
-  dispatch(setAuthToken(authToken));
-  dispatch(fetchAuthSuccess(decodeToken.user));
-  localStorage.setItem(authToken, authToken);
-
 };
