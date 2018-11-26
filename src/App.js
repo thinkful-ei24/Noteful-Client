@@ -1,15 +1,16 @@
-import React, { Component } from 'react';
-import Login from './_containers/login-container';
-import './App.css';
+import React from 'react';
+import { BrowserRouter, Route, Switch } from 'react-router-dom';
 
-class App extends Component {
-  render() {
-    return (
-      <div className="App">
-      <Login />
-      </div>
-    );
-  }
-}
+import LogIn from './_containers/login-container';
+import NotFound from './pages/not-found';
+
+const App = () => (
+  <BrowserRouter>
+    <Switch>
+      <Route path="/login" component={LogIn} />
+      <Route component={NotFound} />
+    </Switch>
+  </BrowserRouter>
+);
 
 export default App;
