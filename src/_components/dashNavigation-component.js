@@ -33,7 +33,7 @@ const DashNavigation = props => {
           localStorage.clear();
         }}
       >
-        Log In
+        Log Out
       </button>
     </nav>
   );
