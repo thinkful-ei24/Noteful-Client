@@ -2,6 +2,7 @@ import React from 'react';
 import { reduxForm, Field } from 'redux-form';
 import { connect } from 'react-redux';
 
+require('./login-container.css');
 
 export function LoginForm(props) {
   return (
