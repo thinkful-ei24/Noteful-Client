@@ -1,5 +1,6 @@
 import React from 'react';
 import { Field, reduxForm, focus } from 'redux-form';
+import { Redirect } from 'react-router-dom';
 
 import Navigation from '../_components/navigation-component';
 
@@ -20,15 +21,12 @@ export class SignUpForm extends React.Component {
   }
 
   render() {
-    let nav;
-    // if (props.loggedIn) {
-    //   // nav = <DashNavigation />;
-    // } else {
-    nav = <Navigation />;
-    // }
+    if (this.props.loggedIn) {
+      return <Redirect to="/dashboard" />;
+    }
     return (
       <React.Fragment>
-        {nav}
+        <Navigation />
         <form
           className="login-form"
           onSubmit={this.props.handleSubmit(values => this.onSubmit(values))}
