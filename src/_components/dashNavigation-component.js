@@ -40,7 +40,7 @@ const DashNavigation = props => {
 };
 
 const mapStateToProps = state => ({
-  loggedIn: state.auth.currentUser !== null
+  loggedIn: state.auth.user !== null
 });
 
 export default connect(mapStateToProps)(DashNavigation);
