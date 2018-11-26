@@ -1,13 +1,13 @@
 import React from 'react';
 import { connect } from 'react-redux';
 
-//import DashNavigation from '../_components/dashNavigation.component';
+import DashNavigation from '../_components/dashNavigation-component';
 
 class Dashboard extends React.Component {
   render() {
     return (
       <div className="dashboard">
-        {/* <DashNavigation /> */}
+        <DashNavigation />
         <div className="dashboard-container">
           Welcome, insert person's name here.
         </div>
