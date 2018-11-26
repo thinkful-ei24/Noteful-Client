@@ -30,58 +30,55 @@ export const fetchAuthFailure = () => ({
 
 export const login = values => dispatch => {
   dispatch(fetchAuthRequest());
-  return fetch('API', {
+
+  return fetch(`${API_BASE_URL}/auth/login`, {
     method: 'POST',
     body: JSON.stringify(values),
     headers: {
       'content-Type': 'application/json'
     }
   })
-    .then(res => {
-      if (!res.ok) {
-        return Promise.reject({
-          code: res.status,
-          message: res.statusText
-        });
-      }
-      return res.json();
-    })
-    .then(({ authToken }) => {
-      storeAuthToken(authToken, dispatch);
-    })
-    .catch(err => {
-      if (err.code === 401) {
-        return Promise.reject(
-          new SubmissionError({
-            _err: 'Incorrect username or password'
-          })
-        );
-      } else {
-        Promise.reject(
-          new SubmissionError({
-            [err.location]: err.message
-          })
-        );
-      }
-    });
-};
+  .then(res => {
+    if (!res.ok) {
+      return Promise.reject({
+        code: res.status,
+        message: res.statusText
+      });
+    }
+    return res.json();
+  })
+  .then(({authToken}) => {
+    storeAuthToken(authToken, dispatch);
+  })
+  .catch(err => {
+    if (err.code === 401) {
+      return Promise.reject(new SubmissionError({
+        _err: 'Incorrect username or password'
+      }));
+    } else {
+      Promise.reject(new SubmissionError({
+        [err.location]: err.message
+      }));
+    }
+  });
+}
 
 export const refreshAuthToken = () => (dispatch, getState) => {
   dispatch(fetchAuthRequest());
   const authToken = getState().auth.authToken;
 
-  return fetch(`${API_BASE_URL}/auth/refresh`, {
+return fetch(`${API_BASE_URL}/auth/refresh`, {
     method: 'POST',
     headers: {
-      Authorization: `Bearer ${authToken}`
+        Authorization: `Bearer ${authToken}`
     }
-  })
+})
     .then(res => res.json())
-    .then(({ authToken }) => storeAuthToken(authToken, dispatch))
+    .then(({authToken}) => storeAuthToken(authToken, dispatch))
     .catch(err => {
-      dispatch(fetchAuthFailure(err));
-      dispatch(clearAuthToken(authToken));
-      localStorage.clear();
+        dispatch(fetchAuthFailure(err));
+        dispatch(clearAuthToken(authToken));
+        localStorage.clear()
     });
 };
 
@@ -90,4 +87,5 @@ export const storeAuthToken = (authToken, dispatch) => {
   dispatch(setAuthToken(authToken));
   dispatch(fetchAuthSuccess(decodeToken.user));
   localStorage.setItem(authToken, authToken);
+
 };
