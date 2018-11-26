@@ -30,7 +30,8 @@ export const fetchAuthFailure = () => ({
 
 export const login = values => dispatch => {
   dispatch(fetchAuthRequest());
-  return fetch(`${API_BASE_URL}/api/auth/login`, {
+
+  return fetch(`${API_BASE_URL}/auth/login`, {
     method: 'POST',
     body: JSON.stringify(values),
     headers: {
@@ -66,7 +67,7 @@ export const refreshAuthToken = () => (dispatch, getState) => {
   dispatch(fetchAuthRequest());
   const authToken = getState().auth.authToken;
 
-  return fetch(`${API_BASE_URL}/api/auth/refresh`, {
+return fetch(`${API_BASE_URL}/auth/refresh`, {
     method: 'POST',
     headers: {
         Authorization: `Bearer ${authToken}`
@@ -86,4 +87,5 @@ export const storeAuthToken = (authToken, dispatch) => {
   dispatch(setAuthToken(authToken));
   dispatch(fetchAuthSuccess(decodeToken.user));
   localStorage.setItem(authToken, authToken);
-}
+
+};
