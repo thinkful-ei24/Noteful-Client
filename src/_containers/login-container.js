@@ -16,6 +16,14 @@ export function LoginForm(props) {
     nav = <Navigation />;
   }
 
+  let error;
+  if (props.error) {
+    error = (
+      <div className="form-error" aria-live="polite">
+        {props.error}
+      </div>
+    );
+  }
   return (
     <React.Fragment>
       {nav}
@@ -24,6 +32,7 @@ export function LoginForm(props) {
         onSubmit={props.handleSubmit(values => props.dispatch(login(values)))}
         aria-label={'login form'}
       >
+        {error}
         <Field
           name="username"
           id="username"
@@ -55,6 +64,7 @@ const mapStateToProps = state => ({
 
 export default reduxForm({
   form: 'login',
-  onSubmitFail: (errors, dispatch) => 
-    dispatch(focus('login', 'username'))
+  onSubmitFail: (errors, dispatch) => {
+    dispatch(focus('login', 'username'));
+  }
 })(connect(mapStateToProps)(LoginForm));

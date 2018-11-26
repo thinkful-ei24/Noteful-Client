@@ -3,7 +3,7 @@ import { SubmissionError } from 'redux-form';
 import { API_BASE_URL } from '../config';
 import { normalizeResponseErrors } from './utils';
 
-export const signUpUser = user => dispatch => {
+export const signUpUser = user => () => {
   return fetch(`${API_BASE_URL}/users`, {
     method: 'POST',
     headers: {
@@ -24,7 +24,14 @@ export const signUpUser = user => dispatch => {
         );
       }
       //catch for other messages
-      const { message } = err;
+      const { message, error } = err;
+      if (error) {
+        return Promise.reject(
+          new SubmissionError({
+            _error: error
+          })
+        );
+      }
       // Convert ValidationErrors into SubmissionErrors for Redux Form
       return Promise.reject(
         new SubmissionError({
