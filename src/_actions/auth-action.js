@@ -57,7 +57,6 @@ export const storeAuthToken = (authToken, dispatch) => {
 
 export const login = values => dispatch => {
   dispatch(fetchAuthRequest());
-
   return fetch(`${API_BASE_URL}/auth/login`, {
     method: 'POST',
     body: JSON.stringify(values),
@@ -78,7 +77,6 @@ export const login = values => dispatch => {
       storeAuthToken(authToken, dispatch);
     })
     .catch(err => {
-      console.log(err);
       if (err.code === 401) {
         return Promise.reject(
           new SubmissionError({
