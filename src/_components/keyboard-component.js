@@ -25,6 +25,7 @@ class Keyboard extends React.Component {
                 class={`key key--accidental ${note[0]}`}
                 note={note}
                 selectedKey={this.handleSelectedKey}
+                keyboardDisabled={this.props.keyboardDisabled}
               />
             );
           })}
@@ -37,6 +38,7 @@ class Keyboard extends React.Component {
               class={'key key--natural'}
               note={note}
               selectedKey={this.handleSelectedKey}
+              keyboardDisabled={this.props.keyboardDisabled}
             />
           );
         })}
