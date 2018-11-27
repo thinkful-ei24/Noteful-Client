@@ -3,6 +3,7 @@ import { connect } from 'react-redux';
 import { Redirect } from 'react-router-dom';
 
 import DashNavigation from '../_components/dashNavigation-component';
+import Keyboard from '../_components/keyboard-component';
 
 const Dashboard = props => {
   if (!props.loggedIn) {
@@ -13,6 +14,7 @@ const Dashboard = props => {
       <DashNavigation />
       <div className="dashboard-container">
         Welcome, insert person's name here.
+        <Keyboard />
       </div>
     </div>
   );
