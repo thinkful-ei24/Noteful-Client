@@ -78,6 +78,7 @@ export const login = values => dispatch => {
       storeAuthToken(authToken, dispatch);
     })
     .catch(err => {
+      console.log(err);
       if (err.code === 401) {
         return Promise.reject(
           new SubmissionError({
