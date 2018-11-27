@@ -1,37 +1,34 @@
-import {} from '../_actions/auth-action';
+import {
+  FETCH_NOTE_REQUEST,
+  FETCH_NOTE_SUCCESS,
+  FETCH_NOTE_FAILURE
+} from '../_actions/notes-action';
 
 const initialState = {
-  noteDisplayed: 'c',
+  noteDisplayed: null,
+  nextNote: null,
   loading: false,
   error: null
 };
 
 export const noteReducer = (state = initialState, action) => {
-  // if (action.type === FETCH_AUTH_REQUEST) {
-  //   return Object.assign({}, state, {
-  //     loading: true
-  //   });
-  // } else if (action.type === FETCH_AUTH_SUCCESS) {
-  //   return Object.assign({}, state, {
-  //     loading: false,
-  //     error: null,
-  //     user: action.user
-  //   });
-  // } else if (action.type === FETCH_AUTH_FAILURE) {
-  //   return Object.assign({}, state, {
-  //     loading: false,
-  //     error: action.error
-  //   });
-  // } else if (action.type === SET_AUTH_TOKEN) {
-  //   return Object.assign({}, state, {
-  //     authToken: action.authToken
-  //   });
-  // } else if (action.type === CLEAR_AUTH_TOKEN) {
-  //   return Object.assign({}, state, {
-  //     authToken: null,
-  //     user: null
-  //   });
-  // }
+  if (action.type === FETCH_NOTE_REQUEST) {
+    return Object.assign({}, state, {
+      loading: true
+    });
+  } else if (action.type === FETCH_NOTE_SUCCESS) {
+    return Object.assign({}, state, {
+      loading: false,
+      error: null,
+      noteDisplayed: action.note,
+      nextNote: action.next
+    });
+  } else if (action.type === FETCH_NOTE_FAILURE) {
+    return Object.assign({}, state, {
+      loading: false,
+      error: action.error
+    });
+  }
   return state;
 };
 
