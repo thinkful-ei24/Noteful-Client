@@ -48,6 +48,8 @@ export const refreshAuthToken = () => (dispatch, getState) => {
     });
 };
 
+//async actions
+
 export const storeAuthToken = (authToken, dispatch) => {
   const decodeToken = jwtDecode(authToken);
   dispatch(setAuthToken(authToken));

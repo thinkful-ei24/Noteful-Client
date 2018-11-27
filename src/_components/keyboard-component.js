@@ -1,10 +1,12 @@
 import React from 'react';
+import { connect } from 'react-redux';
 
 import Key from './key-component';
 import './keyboard-component.css';
 
 class Keyboard extends React.Component {
   handleSelectedKey = note => {
+    //Save to state
     console.log(`the selected key is ${note}`);
   };
 
@@ -41,4 +43,8 @@ class Keyboard extends React.Component {
   }
 }
 
-export default Keyboard;
+const mapStateToProps = state => ({
+  selectedKey: state.selectedKey
+});
+
+export default connect(mapStateToProps)(Keyboard);
