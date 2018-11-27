@@ -2,6 +2,7 @@ import React from 'react';
 import { reduxForm, Field } from 'redux-form';
 import { connect } from 'react-redux';
 import { Redirect } from 'react-router-dom';
+import Input from '../_components/input-component';
 import Navigation from '../_components/navigation-component';
 import Dashboard from '../_containers/dashboard-container';
 import { login } from '../_actions/auth-action';
@@ -30,8 +31,7 @@ export function LoginForm(props) {
         <Field
           name="username"
           id="username"
-          component={'Input'}
-          element="input"
+          component={Input}
           type="text"
           label="Username"
           aria-label={'username field'}
@@ -39,8 +39,7 @@ export function LoginForm(props) {
         <Field
           name="password"
           id="password"
-          component={'Input'}
-          element="input"
+          component={Input}
           type="password"
           label="Password"
           aria-label={'password field'}
