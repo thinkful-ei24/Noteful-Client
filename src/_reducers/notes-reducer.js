@@ -1,37 +1,25 @@
-import {} from '../_actions/auth-action';
+import { SELECT_KEY, UPDATE_KEYBOARD } from '../_actions/notes-action';
 
 const initialState = {
-  noteDisplayed: 'c',
+  selectedKey: null,
+  keyboardDisabled: false,
+  noteDisplayed: 'C',
   loading: false,
   error: null
 };
 
 export const noteReducer = (state = initialState, action) => {
-  // if (action.type === FETCH_AUTH_REQUEST) {
-  //   return Object.assign({}, state, {
-  //     loading: true
-  //   });
-  // } else if (action.type === FETCH_AUTH_SUCCESS) {
-  //   return Object.assign({}, state, {
-  //     loading: false,
-  //     error: null,
-  //     user: action.user
-  //   });
-  // } else if (action.type === FETCH_AUTH_FAILURE) {
-  //   return Object.assign({}, state, {
-  //     loading: false,
-  //     error: action.error
-  //   });
-  // } else if (action.type === SET_AUTH_TOKEN) {
-  //   return Object.assign({}, state, {
-  //     authToken: action.authToken
-  //   });
-  // } else if (action.type === CLEAR_AUTH_TOKEN) {
-  //   return Object.assign({}, state, {
-  //     authToken: null,
-  //     user: null
-  //   });
-  // }
+  if (action.type === SELECT_KEY) {
+    return Object.assign({}, state, {
+      selectedKey: action.selectedKey
+    });
+  }
+  if (action.type === UPDATE_KEYBOARD) {
+    return Object.assign({}, state, {
+      keyboardDisabled: !state.keyboardDisabled
+    });
+  }
+
   return state;
 };
 

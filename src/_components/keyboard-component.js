@@ -1,13 +1,15 @@
 import React from 'react';
 import { connect } from 'react-redux';
 
+import { selectKey, updateKeyboard } from '../_actions/notes-action';
+
 import Key from './key-component';
 import './keyboard-component.css';
 
 class Keyboard extends React.Component {
   handleSelectedKey = note => {
-    //Save to state
-    console.log(`the selected key is ${note}`);
+    this.props.dispatch(selectKey(note));
+    this.props.dispatch(updateKeyboard());
   };
 
   render() {
@@ -44,7 +46,8 @@ class Keyboard extends React.Component {
 }
 
 const mapStateToProps = state => ({
-  selectedKey: state.selectedKey
+  selectedKey: state.selectedKey,
+  keyboardDisabled: state.note.keyboardDisabled
 });
 
 export default connect(mapStateToProps)(Keyboard);
