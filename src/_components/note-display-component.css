@@ -1,0 +1,14 @@
+.note-display-container {
+  width: 500px;
+  height: 500px;
+  margin-top: -50px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+#note-img {
+  position: relative;
+  height: 150px;
+  left: 225px;
+}
+
