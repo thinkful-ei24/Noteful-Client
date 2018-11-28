@@ -56,14 +56,12 @@ class Dashboard extends React.Component {
     // if the note displayed and pressed are the same increment up a point
     // and  set the feedbackMessage and feedbackType to indicate success
     else if (this.props.noteDisplayed === this.props.selectedKey) {
-      this.props.dispatch(incrementPoints());
       feedbackMessage = "You're correct!";
       feedbackType = 'correctGuess';
     }
     // if the note displayed and pressed are not the same decrement a point
     //and indicate the correct note inside the feedbackMessage
     else {
-      this.props.dispatch(decrementPoints());
       feedbackMessage = `Oops, the correct answer is ${
         this.props.noteDisplayed
       }`;

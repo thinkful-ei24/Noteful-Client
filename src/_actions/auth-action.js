@@ -52,9 +52,9 @@ export const refreshAuthToken = () => (dispatch, getState) => {
 
 export const storeAuthToken = (authToken, dispatch) => {
   const decodeToken = jwtDecode(authToken);
+  localStorage.setItem('authToken', authToken);
   dispatch(setAuthToken(authToken));
   dispatch(fetchAuthSuccess(decodeToken.user));
-  localStorage.setItem('authToken', authToken);
 };
 
 export const login = values => dispatch => {

@@ -6,6 +6,7 @@ import { Redirect } from 'react-router-dom';
 import { clearAuthToken } from '../_actions/auth-action';
 import { clearPoints } from '../_actions/points-action';
 import { clearNote } from '../_actions/notes-action';
+import { clearCard } from '../_actions/card-actions';
 
 const DashNavigation = props => {
   if (!props.loggedIn) {
@@ -36,6 +37,7 @@ const DashNavigation = props => {
           localStorage.clear();
           props.dispatch(clearNote());
           props.dispatch(clearPoints());
+          props.dispatch(clearCard());
         }}
       >
         Log Out

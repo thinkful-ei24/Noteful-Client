@@ -62,6 +62,11 @@ export const clearNote = () => ({
   type: CLEAR_NOTE
 });
 
+export const CLEAR_KEYBOARD = 'CLEAR_KEYBOARD';
+export const clearKeyboard = () => ({
+  type: CLEAR_KEYBOARD
+});
+
 export const updateNote = isCorrect => (dispatch, getState) => {
   dispatch(updateNoteRequest());
   const authToken = getState().auth.authToken;

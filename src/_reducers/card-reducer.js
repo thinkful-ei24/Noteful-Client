@@ -1,7 +1,8 @@
 import {
   FETCH_CARD_REQUEST,
   FETCH_CARD_SUCCESS,
-  FETCH_CARD_FAILURE
+  FETCH_CARD_FAILURE,
+  CLEAR_CARD
 } from '../_actions/card-actions';
 
 const initialState = {
@@ -26,6 +27,8 @@ export const authReducer = (state = initialState, action) => {
       loading: false,
       error: action.error
     });
+  } else if (action.type === CLEAR_CARD) {
+    return initialState;
   }
   return state;
 };
