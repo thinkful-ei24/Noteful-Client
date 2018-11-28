@@ -17,6 +17,14 @@ export function SignUpForm(props) {
     return <Redirect to="/dashboard" />;
   }
 
+  let error;
+  if (props.error) {
+    error = (
+      <div className="form-error" aria-live="polite">
+        {props.error}
+      </div>
+    );
+  }
   return (
     <React.Fragment>
       <Navigation />
@@ -30,6 +38,7 @@ export function SignUpForm(props) {
             .then(() => props.dispatch(login(values)));
         })}
       >
+        {error}
         <label htmlFor="name">Name</label>
         <Field component={Input} type="text" name="name" />
         <label htmlFor="username">Username</label>
