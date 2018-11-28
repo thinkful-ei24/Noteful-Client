@@ -6,7 +6,7 @@ import SignUp from './_containers/signup-container';
 import LoginForm from './_containers/login-container';
 import NotFound from './pages/not-found';
 import Dashboard from './_containers/dashboard-container';
-import Progress from './_containers/progress-container'
+import Progress from './_containers/progress-container';
 
 const App = () => (
   <BrowserRouter>

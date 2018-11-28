@@ -1,16 +1,23 @@
 import React from 'react';
 import { connect } from 'react-redux';
 
-import { selectKey, updateKeyboard, updateNote } from '../_actions/notes-action';
+import {
+  selectKey,
+  updateKeyboard,
+  updateNote
+} from '../_actions/notes-action';
 
 import Key from './key-component';
 import './keyboard-component.css';
 
 class Keyboard extends React.Component {
   handleSelectedKey = note => {
+    //sets selectKey state to equal the note clicked
     this.props.dispatch(selectKey(note));
+    //sets the keyboard to disabled after you click a note
     this.props.dispatch(updateKeyboard());
-    this.props.dispatch(updateNote(this.props.noteDisplayed === note))
+
+    this.props.dispatch(updateNote(this.props.noteDisplayed === note));
   };
 
   render() {

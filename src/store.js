@@ -6,6 +6,7 @@ import authReducer from './_reducers/auth-reducer';
 import { setAuthToken, refreshAuthToken } from './_actions/auth-action';
 import noteReducer from './_reducers/notes-reducer';
 import cardReducer from './_reducers/card-reducer';
+import pointsReducer from './_reducers/points-reducer';
 
 //add in Redux devtools
 const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
@@ -16,6 +17,7 @@ const store = createStore(
     auth: authReducer,
     note: noteReducer,
     card: cardReducer,
+    point: pointsReducer
   }),
   composeEnhancers(applyMiddleware(thunk))
 );

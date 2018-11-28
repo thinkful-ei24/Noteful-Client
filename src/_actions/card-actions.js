@@ -17,45 +17,43 @@ export const fetchCardFailure = () => ({
   type: FETCH_CARD_FAILURE
 });
 
-
 export const getCards = () => dispatch => {
   dispatch(fetchCardRequest());
   const authToken = localStorage.getItem('authToken');
-  if(authToken) {
+  if (authToken) {
     return fetch(`${API_BASE_URL}/cards`, {
       method: 'GET',
       headers: {
-        'Authorization': 'Bearer ' + authToken,
+        Authorization: 'Bearer ' + authToken,
         'content-Type': 'application/json'
       }
     })
-    .then(res => {
-      if (!res.ok) {
-        return Promise.reject({
-          code: res.status,
-          message: res.statusText
-        });
-      }
-      return res.json();
-    })
-    .then(res => {
-      dispatch(fetchCardSuccess(res))
-    })
-    .catch(err => {
-      console.log(err);
-      if (err.code === 401) {
-        return Promise.reject(
-          new SubmissionError({
-            _err: 'Incorrect username or password'
-          })
-        );
-      } else {
-        Promise.reject(
-          new SubmissionError({
-            [err.location]: err.message
-          })
-        );
-      }
-    });
-  };
+      .then(res => {
+        if (!res.ok) {
+          return Promise.reject({
+            code: res.status,
+            message: res.statusText
+          });
+        }
+        return res.json();
+      })
+      .then(res => {
+        dispatch(fetchCardSuccess(res));
+      })
+      .catch(err => {
+        if (err.code === 401) {
+          return Promise.reject(
+            new SubmissionError({
+              _err: 'Incorrect username or password'
+            })
+          );
+        } else {
+          Promise.reject(
+            new SubmissionError({
+              [err.location]: err.message
+            })
+          );
+        }
+      });
+  }
 };

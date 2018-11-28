@@ -1,7 +1,7 @@
 import {
   FETCH_CARD_REQUEST,
   FETCH_CARD_SUCCESS,
-  FETCH_CARD_FAILURE,
+  FETCH_CARD_FAILURE
 } from '../_actions/card-actions';
 
 const initialState = {
@@ -16,7 +16,6 @@ export const authReducer = (state = initialState, action) => {
       loading: true
     });
   } else if (action.type === FETCH_CARD_SUCCESS) {
-    console.log(action);
     return Object.assign({}, state, {
       loading: false,
       error: null,
