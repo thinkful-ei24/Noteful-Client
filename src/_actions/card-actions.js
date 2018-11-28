@@ -17,6 +17,11 @@ export const fetchCardFailure = () => ({
   type: FETCH_CARD_FAILURE
 });
 
+export const CLEAR_CARD = 'CLEAR_CARD';
+export const clearCard = () => ({
+  type: CLEAR_CARD
+});
+
 export const getCards = () => dispatch => {
   dispatch(fetchCardRequest());
   const authToken = localStorage.getItem('authToken');
