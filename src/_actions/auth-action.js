@@ -82,7 +82,7 @@ export const login = values => dispatch => {
       if (err.code === 401) {
         return Promise.reject(
           new SubmissionError({
-            _err: 'Incorrect username or password'
+            _error: 'Incorrect username or password'
           })
         );
       } else {

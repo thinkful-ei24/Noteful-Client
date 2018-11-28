@@ -7,10 +7,10 @@ import Points from '../_components/points-component';
 import Keyboard from '../_components/keyboard-component';
 import Feedback from '../_components/feedback-component';
 import NoteDisplay from '../_components/note-display-component';
+import NextButton from '../_components/next-button-component';
 
 import { fetchNote, updateKeyboard, selectKey, clearNoteDisplayed } from '../_actions/notes-action';
 import { getCards } from '../_actions/card-actions';
-import { incrementPoints, decrementPoints } from '../_actions/points-action';
 
 class Dashboard extends React.Component {
   componentDidMount() {
@@ -22,10 +22,6 @@ class Dashboard extends React.Component {
     if (!this.props.loggedIn) {
       return <Redirect to="/" />;
     }
-
-
-
-
 
     //logic for displaying the next button
     let nextButton = this.props.keyboardDisabled ? (
@@ -45,6 +41,7 @@ class Dashboard extends React.Component {
       </button>
     ) : ('');
     console.log('rerender');
+
     return (
       <div className="dashboard">
         <DashNavigation />
@@ -53,7 +50,7 @@ class Dashboard extends React.Component {
           <Feedback />
           <NoteDisplay note={this.props.noteDisplayed} />
           <Keyboard />
-          {nextButton}
+          <NextButton />
         </div>
       </div>
     );
