@@ -6,6 +6,7 @@ import SignUp from './_containers/signup-container';
 import LoginForm from './_containers/login-container';
 import NotFound from './pages/not-found';
 import Dashboard from './_containers/dashboard-container';
+import Progress from './_containers/progress-container'
 
 const App = () => (
   <BrowserRouter>
@@ -14,6 +15,7 @@ const App = () => (
       <Route path="/signup" component={SignUp} />
       <Route path="/login" component={LoginForm} />
       <Route path="/dashboard" component={Dashboard} />
+      <Route path="/progress" component={Progress} />
       <Route component={NotFound} />
     </Switch>
   </BrowserRouter>
