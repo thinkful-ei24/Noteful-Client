@@ -2,7 +2,8 @@ import React from 'react';
 
 import staff from '../_images/sheet.png';
 import note from '../_images/note.png';
-require('./note-display.css');
+import { playSound } from '../utils/sound-player';
+require('./note-display-component.css');
 
 export default function NoteDisplay(props) {
   // list of note positions
@@ -17,6 +18,7 @@ export default function NoteDisplay(props) {
   };
 
   const updateNote = value => {
+
     return notes[value];
   };
 

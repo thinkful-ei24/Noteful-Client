@@ -31,16 +31,10 @@ export function playSound(e) {
     G: G
   };
   const source = keys[note];
-  console.log('src: ', source);
-
   const player = new Audio(source);
-  console.log(player.src);
-  player.play(source);
+  player.autoplay = false;
 
-  // SoundFont.instrument(new AudioContext(), 'acoustic_grand_piano').then(function (acoustic_grand_piano) {
-  //   acoustic_grand_piano.notes = ['C4'];
-  //   acoustic_grand_piano.play(40);
-  // })
+  player.play(source);
 }
 
 
