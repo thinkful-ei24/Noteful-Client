@@ -2,7 +2,7 @@ import React from 'react';
 import { connect } from 'react-redux';
 
 import { getCards } from '../_actions/card-actions';
-
+import { incrementPoints } from '../_actions/points-action';
 //display points with copy 'you have X points'
 // x =
 //run getCards action
@@ -22,21 +22,22 @@ class Points extends React.Component {
   }
 
   render() {
-    console.log(this.props.cards);
-
+    //FIXME: remaining issue with old state - even alt user's old state
+    //being displayed when a user first logs in until they refresh
+    //may need to move logic out of render
     let total = 0;
     let correct = 0;
-
-    console.log('this is the initial total', total);
     //tally up total cards answered and correct answers
     this.props.cards.forEach(card => {
       total += card.total;
       correct += card.correct;
     });
-    console.log('this is the total after cards', total);
-    // initial points on load
+
+    // initial points
     let initialPoints = correct - (total - correct);
-    console.log(initialPoints, this.props.points);
+
+    console.log('initial points', initialPoints);
+    console.log('props points', this.props.points);
     return (
       <div>
         <p>You have {initialPoints + this.props.points} points</p>

@@ -10,6 +10,7 @@ import NoteDisplay from '../_components/note-display-component';
 
 import { fetchNote, updateKeyboard, selectKey } from '../_actions/notes-action';
 import { getCards } from '../_actions/card-actions';
+import { incrementPoints, decrementPoints } from '../_actions/points-action';
 
 class Dashboard extends React.Component {
   componentDidMount() {
@@ -24,14 +25,22 @@ class Dashboard extends React.Component {
       return <Redirect to="/" />;
     }
 
-    //Feedback based on keyboard and
+    //Logic for feedback content and points count
+    //based on user selecting the correct or incorrect key
+
+    //variables for feedback content
     let feedbackMessage;
     let feedbackType;
+
+    //logic for displaying the next button
     let nextButton = this.props.keyboardDisabled ? (
       <button
         onClick={() => {
+          //fetch the next note
           this.props.dispatch(fetchNote(this.props.nextNote));
+          //set the keyboardDisabled back to false in order to display it again
           this.props.dispatch(updateKeyboard());
+          //reset selectedKey to null after you click next
           this.props.dispatch(selectKey(null));
         }}
       >
@@ -41,13 +50,22 @@ class Dashboard extends React.Component {
       ''
     );
 
+    //if there isn't a selectedKey keep up the hello username message
     if (!this.props.selectedKey) {
       feedbackMessage = `Hello, ${this.props.user.name}`;
       feedbackType = 'general';
-    } else if (this.props.noteDisplayed === this.props.selectedKey) {
+    }
+    // if the note displayed and pressed are the same increment up a point
+    // and  set the feedbackMessage and feedbackType to indicate success
+    else if (this.props.noteDisplayed === this.props.selectedKey) {
+      this.props.dispatch(incrementPoints());
       feedbackMessage = "You're correct!";
       feedbackType = 'correctGuess';
-    } else {
+    }
+    // if the note displayed and pressed are not the same decrement a point
+    //and indicate the correct note inside the feedbackMessage
+    else {
+      this.props.dispatch(decrementPoints());
       feedbackMessage = `Oops, the correct answer is ${
         this.props.noteDisplayed
       }`;
