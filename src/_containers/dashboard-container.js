@@ -43,9 +43,7 @@ class Dashboard extends React.Component {
       >
         Next
       </button>
-    ) : (
-      ''
-    );
+    ) : ('');
     console.log('rerender');
     return (
       <div className="dashboard">
