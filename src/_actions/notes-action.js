@@ -27,13 +27,11 @@ export const fetchNoteFailure = () => ({
   type: FETCH_NOTE_FAILURE
 });
 
-export const fetchNote = cardId => (dispatch, getState) => {
+export const fetchNote = () => (dispatch, getState) => {
   dispatch(fetchNoteRequest());
   const authToken = getState().auth.authToken;
 
-  cardId = cardId ? cardId : 'first';
-
-  return fetch(`${API_BASE_URL}/cards/${cardId}`, {
+  return fetch(`${API_BASE_URL}/cards/first`, {
     method: 'GET',
     headers: {
       Authorization: `Bearer ${authToken}`

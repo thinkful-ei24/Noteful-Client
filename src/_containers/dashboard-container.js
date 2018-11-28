@@ -14,10 +14,8 @@ import { incrementPoints, decrementPoints } from '../_actions/points-action';
 
 class Dashboard extends React.Component {
   componentDidMount() {
-    if (!this.props.noteDisplayed) {
-      this.props.dispatch(fetchNote());
-      this.props.dispatch(getCards());
-    }
+    this.props.dispatch(fetchNote());
+    this.props.dispatch(getCards());
   }
 
   render() {
