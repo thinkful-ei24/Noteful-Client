@@ -1,30 +1,25 @@
 import React from 'react';
-import {
-  connect
-} from 'react-redux';
+import { connect } from 'react-redux';
 require('./feedback-component.css');
 
 export class Feedback extends React.Component {
-    constructor(props) {
-      super(props);
-      this.state = {
-        key: this.props.guessCount,
-        message: this.props.message,
-        type: this.props.feedbackType,
-        feedbackTypes: {
-          general: 'yellow',
-          correctGuess: 'green',
-          incorrectGuess: 'red'
-        },
+  constructor(props) {
+    super(props);
+    this.state = {
+      feedbackTypes: {
+        general: 'yellow',
+        correctGuess: 'green',
+        incorrectGuess: 'red'
       }
-    }
+    };
+  }
 
-    //Logic for feedback content and points count
-    //based on user selecting the correct or incorrect key
+  //Logic for feedback content and points count
+  //based on user selecting the correct or incorrect key
   render() {
     //variables for feedback content
-    let feedbackMessage = ''
-    let feedbackType = '';
+    let feedbackMessage;
+    let feedbackType;
     //if there isn't a selectedKey keep up the hello username message
     if (!this.props.selectedKey) {
       feedbackMessage = `Hello, ${this.props.user.name}`;
@@ -39,27 +34,27 @@ export class Feedback extends React.Component {
     // if the note displayed and pressed are not the same decrement a point
     //and indicate the correct note inside the feedbackMessage
     else {
-      feedbackMessage = `Oops, the correct answer is ${this.props.noteDisplayed}`;
+      feedbackMessage = `Oops, the correct answer is ${
+        this.props.noteDisplayed
+      }`;
       feedbackType = 'incorrectGuess';
     }
 
     return (
       <div
         className="feedback-container"
-        style={{ backgroundColor: this.state.feedbackTypes.type }}
+        style={{ backgroundColor: this.state.feedbackTypes[feedbackType] }}
       >
-        <h2 key={this.state.key} id="feedback-message">
-          {this.state.message}
-        </h2>
+        <h2 id="feedback-message">{feedbackMessage}</h2>
       </div>
     );
   }
-};
+}
 
 const mapStateToProps = state => ({
   user: state.auth.user,
   noteDisplayed: state.note.noteDisplayed,
-  selectedKey: state.note.selectedKey,
+  selectedKey: state.note.selectedKey
 });
 
 export default connect(mapStateToProps)(Feedback);
