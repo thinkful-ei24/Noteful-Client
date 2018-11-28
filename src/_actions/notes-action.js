@@ -62,6 +62,11 @@ export const clearNote = () => ({
   type: CLEAR_NOTE
 });
 
+export const CLEAR_NOTE_DISPLAYED = 'CLEAR_NOTE_DISPLAYED';
+export const clearNoteDisplayed = () => ({
+  type: CLEAR_NOTE_DISPLAYED
+});
+
 export const CLEAR_KEYBOARD = 'CLEAR_KEYBOARD';
 export const clearKeyboard = () => ({
   type: CLEAR_KEYBOARD

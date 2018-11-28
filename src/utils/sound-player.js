@@ -1,5 +1,3 @@
-import SoundFont from 'soundfont-player';
-
 export function removeTransition(e) {
   if (e.propertyName !== 'transform') return;
   e.target.classList.remove('playing');
@@ -33,7 +31,6 @@ export function playSound(e) {
   const source = keys[note];
   const player = new Audio(source);
   player.autoplay = false;
-
   player.play(source);
 }
 
