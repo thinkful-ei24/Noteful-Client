@@ -4,7 +4,11 @@ import './keyboard-component.css';
 const Key = props => {
   let note = props.note;
   return (
-    <button className={props.class} onClick={() => props.selectedKey(note)}>
+    <button
+      className={props.class}
+      disabled={props.keyboardDisabled}
+      onClick={() => props.selectedKey(note)}
+    >
       <p className="note-label">
         <span>{note}</span>
       </p>

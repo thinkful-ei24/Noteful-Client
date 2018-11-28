@@ -1,7 +1,7 @@
 import React from 'react';
 import { connect } from 'react-redux';
 
-import { selectKey, updateKeyboard } from '../_actions/notes-action';
+import { selectKey, updateKeyboard, updateNote } from '../_actions/notes-action';
 
 import Key from './key-component';
 import './keyboard-component.css';
@@ -10,6 +10,7 @@ class Keyboard extends React.Component {
   handleSelectedKey = note => {
     this.props.dispatch(selectKey(note));
     this.props.dispatch(updateKeyboard());
+    this.props.dispatch(updateNote(this.props.noteDisplayed === note))
   };
 
   render() {
@@ -25,6 +26,7 @@ class Keyboard extends React.Component {
                 class={`key key--accidental ${note[0]}`}
                 note={note}
                 selectedKey={this.handleSelectedKey}
+                keyboardDisabled={this.props.keyboardDisabled}
               />
             );
           })}
@@ -37,6 +39,7 @@ class Keyboard extends React.Component {
               class={'key key--natural'}
               note={note}
               selectedKey={this.handleSelectedKey}
+              keyboardDisabled={this.props.keyboardDisabled}
             />
           );
         })}
@@ -46,7 +49,8 @@ class Keyboard extends React.Component {
 }
 
 const mapStateToProps = state => ({
-  selectedKey: state.selectedKey,
+  noteDisplayed: state.note.noteDisplayed,
+  selectedKey: state.note.selectedKey,
   keyboardDisabled: state.note.keyboardDisabled
 });
 

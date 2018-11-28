@@ -6,8 +6,10 @@ import DashNavigation from '../_components/dashNavigation-component';
 import Keyboard from '../_components/keyboard-component';
 import Feedback from '../_components/feedback-component';
 import NoteDisplay from '../_components/note-display-component';
-import { fetchNote } from '../_actions/notes-action';
+
+import { fetchNote, updateKeyboard, selectKey } from '../_actions/notes-action';
 import { getCards } from '../_actions/card-actions';
+
 
 class Dashboard extends React.Component {
   componentDidMount() {
@@ -26,18 +28,28 @@ class Dashboard extends React.Component {
       return <Redirect to="/" />;
     }
 
-    //function to handle logic of feedback
-    // if props.noteDisplayed === props.selectedKey
-    // variable message = you're correct
-    // else variable message = Oops, the correct answer is props.noteDisplayed
+    //Feedback based on keyboard and
     let feedbackMessage;
     let feedbackType;
+    let nextButton = this.props.keyboardDisabled ? (
+      <button
+        onClick={() => {
+          this.props.dispatch(fetchNote(this.props.nextNote));
+          this.props.dispatch(updateKeyboard());
+          this.props.dispatch(selectKey(null));
+        }}
+      >
+        Next
+      </button>
+    ) : (
+      ''
+    );
 
     if (!this.props.selectedKey) {
       feedbackMessage = `Hello, ${this.props.user.name}`;
       feedbackType = 'general';
     } else if (this.props.noteDisplayed === this.props.selectedKey) {
-      feedbackMessage = `You're correct!`;
+      feedbackMessage = 'You\'re correct!';
       feedbackType = 'correctGuess';
     } else {
       feedbackMessage = `Oops, the correct answer is ${
@@ -56,6 +68,7 @@ class Dashboard extends React.Component {
           <Feedback message={feedbackMessage} feedbackType={feedbackType} />
           <NoteDisplay note={this.props.noteDisplayed} />
           <Keyboard />
+          {nextButton}
         </div>
       </div>
     );
@@ -67,7 +80,8 @@ const mapStateToProps = state => ({
   user: state.auth.user,
   noteDisplayed: state.note.noteDisplayed,
   selectedKey: state.note.selectedKey,
-  keyboardDisabled: state.note.keyboardDisabled
+  keyboardDisabled: state.note.keyboardDisabled,
+  nextNote: state.note.nextNote
 });
 
 export default connect(mapStateToProps)(Dashboard);
