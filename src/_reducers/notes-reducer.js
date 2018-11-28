@@ -8,7 +8,8 @@ import {
   UPDATE_NOTE_SUCCESS,
   UPDATE_NOTE_FAILURE,
   CLEAR_NOTE,
-  CLEAR_KEYBOARD
+  CLEAR_KEYBOARD,
+  CLEAR_NOTE_DISPLAYED
 } from '../_actions/notes-action';
 
 const initialState = {
@@ -70,6 +71,12 @@ export const noteReducer = (state = initialState, action) => {
 
   if (action.type === CLEAR_NOTE) {
     return initialState;
+  }
+
+  if (action.type === CLEAR_NOTE_DISPLAYED) {
+    return Object.assign({}, state, {
+      noteDisplayed: null,
+    });
   }
 
   if (action.type === CLEAR_KEYBOARD) {

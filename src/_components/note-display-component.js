@@ -16,9 +16,14 @@ export default function NoteDisplay(props) {
     F: 319,
     G: 345
   };
-
+  let lastNote = '';
   const updateNote = value => {
-
+    console.log('last:', lastNote, value);
+    if(lastNote !== props.note) {
+      console.log(lastNote, value);
+      playSound(value);
+    }
+    lastNote = value;
     return notes[value];
   };
 

@@ -2,7 +2,6 @@ import React from 'react';
 import './keyboard-component.css';
 import { playSound } from '../utils/sound-player';
 
-
 const Key = props => {
   let note = props.note;
   return (
@@ -10,8 +9,8 @@ const Key = props => {
       className={props.class}
       disabled={props.keyboardDisabled}
       onClick={() => {
-        props.selectedKey(note);
         playSound(note);
+        props.selectedKey(note);
       }}
     >
       <p className="note-label">
