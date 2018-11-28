@@ -24,6 +24,9 @@ export default function NoteDisplay(props) {
     <div className="note-display-container">
       <img id="sheet-img" src={staff} alt="notation background" />
       <img
+        // tada, rubberBand, jello, wobble, slideInDown, rollIn
+        // if wrong set to hinge?
+        className='animated tada'
         style={{ bottom: updateNote(props.note) }}
         id="note-img"
         src={note}
