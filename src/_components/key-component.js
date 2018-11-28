@@ -1,6 +1,6 @@
 import React from 'react';
 import './keyboard-component.css';
-import { removeTransition, playSound } from '../utils/sound-player';
+import { playSound } from '../utils/sound-player';
 
 
 const Key = props => {
