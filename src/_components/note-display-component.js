@@ -18,9 +18,7 @@ export default function NoteDisplay(props) {
   };
   let lastNote = '';
   const updateNote = value => {
-    console.log('last:', lastNote, value);
-    if(lastNote !== props.note) {
-      console.log(lastNote, value);
+    if (lastNote !== props.note) {
       playSound(value);
     }
     lastNote = value;
@@ -33,7 +31,7 @@ export default function NoteDisplay(props) {
       <img
         // tada, rubberBand, jello, wobble, slideInDown, rollIn
         // if wrong set to hinge?
-        className='animated tada'
+        className="animated tada"
         style={{ bottom: updateNote(props.note) }}
         id="note-img"
         src={note}
