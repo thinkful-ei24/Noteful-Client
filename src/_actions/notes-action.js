@@ -42,7 +42,6 @@ export const fetchNote = () => (dispatch, getState) => {
     .catch(err => dispatch(fetchNoteFailure(err)));
 };
 
-
 export const UPDATE_NOTE_REQUEST = 'UPDATE_NOTE_REQUEST';
 export const updateNoteRequest = () => ({
   type: UPDATE_NOTE_REQUEST
@@ -56,6 +55,11 @@ export const updateNoteSuccess = () => ({
 export const UPDATE_NOTE_FAILURE = 'UPDATE_NOTE_FAILURE';
 export const updateNoteFailure = () => ({
   type: UPDATE_NOTE_FAILURE
+});
+
+export const CLEAR_NOTE = 'CLEAR_NOTE';
+export const clearNote = () => ({
+  type: CLEAR_NOTE
 });
 
 export const updateNote = isCorrect => (dispatch, getState) => {

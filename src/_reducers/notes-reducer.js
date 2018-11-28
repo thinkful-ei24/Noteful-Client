@@ -6,7 +6,8 @@ import {
   FETCH_NOTE_FAILURE,
   UPDATE_NOTE_REQUEST,
   UPDATE_NOTE_SUCCESS,
-  UPDATE_NOTE_FAILURE
+  UPDATE_NOTE_FAILURE,
+  CLEAR_NOTE
 } from '../_actions/notes-action';
 
 const initialState = {
@@ -57,7 +58,7 @@ export const noteReducer = (state = initialState, action) => {
   } else if (action.type === UPDATE_NOTE_SUCCESS) {
     return Object.assign({}, state, {
       loading: false,
-      error: null,
+      error: null
     });
   } else if (action.type === UPDATE_NOTE_FAILURE) {
     return Object.assign({}, state, {
@@ -65,6 +66,11 @@ export const noteReducer = (state = initialState, action) => {
       error: action.error
     });
   }
+
+  if (action.type === CLEAR_NOTE) {
+    return initialState;
+  }
+
   return state;
 };
 

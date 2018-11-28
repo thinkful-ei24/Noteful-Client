@@ -9,3 +9,9 @@ export const decrementPoints = points => ({
   type: DECREMENT_POINTS,
   points
 });
+
+export const CLEAR_POINTS = 'CLEAR_POINTS';
+export const clearPoints = points => ({
+  type: CLEAR_POINTS,
+  points
+});

@@ -1,8 +1,11 @@
 import React from 'react';
 import { NavLink } from 'react-router-dom';
-import { clearAuthToken } from '../_actions/auth-action';
 import { connect } from 'react-redux';
 import { Redirect } from 'react-router-dom';
+
+import { clearAuthToken } from '../_actions/auth-action';
+import { clearPoints } from '../_actions/points-action';
+import { clearNote } from '../_actions/notes-action';
 
 const DashNavigation = props => {
   if (!props.loggedIn) {
@@ -31,6 +34,8 @@ const DashNavigation = props => {
         onClick={() => {
           props.dispatch(clearAuthToken());
           localStorage.clear();
+          props.dispatch(clearNote());
+          props.dispatch(clearPoints());
         }}
       >
         Log Out
