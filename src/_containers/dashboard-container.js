@@ -2,7 +2,7 @@ import React from 'react';
 import { connect } from 'react-redux';
 import { Redirect } from 'react-router-dom';
 
-import './dashboard-container.css';
+// import './dashboard-container.css';
 
 import DashNavigation from '../_components/dashNavigation-component';
 import Points from '../_components/points-component';
