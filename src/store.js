@@ -5,6 +5,7 @@ import authReducer from './_reducers/auth-reducer';
 
 import { setAuthToken, refreshAuthToken } from './_actions/auth-action';
 import noteReducer from './_reducers/notes-reducer';
+import cardReducer from './_reducers/card-reducer';
 
 //add in Redux devtools
 const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
@@ -13,7 +14,8 @@ const store = createStore(
   combineReducers({
     form: formReducer,
     auth: authReducer,
-    note: noteReducer
+    note: noteReducer,
+    card: cardReducer,
   }),
   composeEnhancers(applyMiddleware(thunk))
 );
