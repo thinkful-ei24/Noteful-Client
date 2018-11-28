@@ -2,7 +2,6 @@ import React from 'react';
 import { connect } from 'react-redux';
 
 import { getCards } from '../_actions/card-actions';
-import { incrementPoints } from '../_actions/points-action';
 //display points with copy 'you have X points'
 // x =
 //run getCards action
