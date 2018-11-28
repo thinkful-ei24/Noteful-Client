@@ -9,5 +9,5 @@
   position: relative;
   height: 150px;
   left: 225px;
-  animation-iteration-count: infinite;
+  animation-iteration-count: 1;
 }
