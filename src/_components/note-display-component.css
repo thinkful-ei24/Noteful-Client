@@ -1,9 +1,7 @@
 .note-display-container {
-  width: 500px;
-  height: 500px;
-  margin-top: -50px;
-  margin-left: auto;
-  margin-right: auto;
+  width: 745px;
+  height: 512px;
+  margin: 0 auto;
 }
 
 #note-img {
@@ -11,4 +9,3 @@
   height: 150px;
   left: 225px;
 }
-

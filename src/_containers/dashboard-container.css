@@ -1,6 +1,7 @@
 .dashboard-container {
   background: #fff;
   max-width: 910px;
+  min-height: 1000px;
   margin: 0 auto;
   border: 1px solid;
   border-radius: 14px;
