@@ -1,5 +1,5 @@
 import React from 'react';
-import { NavLink } from 'react-router-dom';
+import { NavLink, Redirect } from 'react-router-dom';
 import { connect } from 'react-redux';
 
 import { clearAuthToken } from '../_actions/auth-action';
@@ -9,7 +9,7 @@ import { clearCard } from '../_actions/card-actions';
 
 import styled from 'styled-components';
 
-const Navigation = styled.nav`
+const NavigationContainer = styled.nav`
   max-width: 95%;
   margin: 20px auto;
   display: grid;
@@ -68,8 +68,12 @@ const Navigation = styled.nav`
 `;
 
 const DashNavigation = props => {
+  if (!localStorage.getItem('authToken')) {
+    return <Redirect to="/" />;
+  }
+
   return (
-    <Navigation>
+    <NavigationContainer>
       <NavLink
         aria-label="Noteful Logo"
         to="/dashboard"
@@ -96,7 +100,7 @@ const DashNavigation = props => {
       >
         Log Out
       </button>
-    </Navigation>
+    </NavigationContainer>
   );
 };
 

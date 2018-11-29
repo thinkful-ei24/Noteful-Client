@@ -1,7 +1,6 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import styled from 'styled-components';
-import { Redirect } from 'react-router-dom';
 
 import { getCards } from '../_actions/card-actions';
 import DashNavigation from '../_components/dashNavigation-component';
@@ -82,10 +81,6 @@ class ProgressDisplay extends React.Component {
   }
 
   render() {
-    if (!this.props.loggedIn) {
-      return <Redirect to="/" />;
-    }
-
     let notes = this.props.cards.map((card, index) => {
       let correctSize = 0;
       let incorrectSize = 0;
