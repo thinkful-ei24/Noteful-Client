@@ -1,21 +1,39 @@
 import React from 'react';
 import { connect } from 'react-redux';
 
-import './points-component.css';
-
 import { getInitialPoints } from '../_actions/points-action';
-//display points with copy 'you have X points'
-// x =
-//run getCards action
-// take total cards and add all the total values together
-// add up the correct values
-// points display  correct - (total - correct)
 
-// Total    1 + 1 + 1 + 1 = 4
-// Correct  0 + 1 + 1 + 0 = 2
-// 2 - (4 -2) = 0
+import styled from 'styled-components';
 
-//save points to state
+const PointsContainer = styled.div`
+  text-align: center;
+  border: 1px solid #4fb7ec;
+  border-radius: 100px;
+  font-family: omnes-pro, sans-serif;
+  font-style: normal;
+  letter-spacing: 2px;
+  min-width: 72px;
+  align-self: center;
+  padding: 6px;
+  margin-bottom: 20px;
+
+  p {
+    color: #4fb7ec;
+    font-weight: 600;
+    font-size: 0.7em;
+    text-transform: uppercase;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    margin: 0;
+  }
+
+  span {
+    font-size: 2.5em;
+    font-weight: 100;
+    line-height: 0.85em;
+  }
+`;
 
 class Points extends React.Component {
   componentDidMount() {
@@ -24,11 +42,11 @@ class Points extends React.Component {
 
   render() {
     return (
-      <div className="points-container">
+      <PointsContainer>
         <p>
           <span>{this.props.initialPoints + this.props.points}</span> points
         </p>
-      </div>
+      </PointsContainer>
     );
   }
 }
