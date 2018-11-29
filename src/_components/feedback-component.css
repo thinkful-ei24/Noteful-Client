@@ -1,15 +1,7 @@
-
 .feedback-container {
-  width: 350px;
-  height: 75px;
-  margin-left: auto;
-  margin-right: auto;
   vertical-align: middle;
-  margin-bottom: -40px;
 }
 
 #feedback-message {
-  text-align: center;
   vertical-align: middle;
-  padding: 20px;
 }

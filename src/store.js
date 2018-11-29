@@ -2,6 +2,7 @@ import { createStore, applyMiddleware, combineReducers, compose } from 'redux';
 import { reducer as formReducer } from 'redux-form';
 import thunk from 'redux-thunk';
 import authReducer from './_reducers/auth-reducer';
+import { reducer as notifReducer } from 'redux-notifications';
 
 import { setAuthToken, refreshAuthToken } from './_actions/auth-action';
 import noteReducer from './_reducers/notes-reducer';
@@ -17,7 +18,8 @@ const store = createStore(
     auth: authReducer,
     note: noteReducer,
     card: cardReducer,
-    point: pointsReducer
+    point: pointsReducer,
+    notifs: notifReducer
   }),
   composeEnhancers(applyMiddleware(thunk))
 );

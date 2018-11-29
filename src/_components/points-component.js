@@ -1,6 +1,8 @@
 import React from 'react';
 import { connect } from 'react-redux';
 
+import './points-component.css';
+
 import { getInitialPoints } from '../_actions/points-action';
 //display points with copy 'you have X points'
 // x =
@@ -22,8 +24,10 @@ class Points extends React.Component {
 
   render() {
     return (
-      <div>
-        <p>You have {this.props.initialPoints + this.props.points} points</p>
+      <div className="points-container">
+        <p>
+          <span>{this.props.initialPoints + this.props.points}</span> points
+        </p>
       </div>
     );
   }

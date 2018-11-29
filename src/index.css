@@ -6,10 +6,30 @@ body {
     sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  background: #545559;
+  background: #f6f6f0;
 }
 
 code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
 }
+
+h1 {
+  font-family: omnes-pro, sans-serif;
+
+  font-weight: 300;
+
+  font-style: normal;
+  font-size: 1.75em;
+  text-align: center;
+  padding: 20px;
+}
+
+h2 {
+  font-family: omnes-pro, sans-serif;
+  font-weight: 200;
+  font-style: normal;
+  letter-spacing: 2px;
+}
+
+/* points css */
