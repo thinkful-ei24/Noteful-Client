@@ -1,6 +1,26 @@
 import React from 'react';
-import './keyboard-component.css';
+import styled from 'styled-components';
+
 import { playSound } from '../utils/sound-player';
+
+const NoteLabel = styled.p`
+  flex: 1;
+  align-self: flex-end;
+  font-size: 12px;
+  text-align: center;
+  text-transform: capitalize;
+  user-select: none;
+
+  .note-label--accidental {
+    color: #f8e8d5;
+    margin-bottom: 3px;
+  }
+
+  .note-label--natural {
+    color: #888;
+    margin-bottom: 3px;
+  }
+`;
 
 const Key = props => {
   let note = props.note;
@@ -13,9 +33,9 @@ const Key = props => {
         props.selectedKey(note);
       }}
     >
-      <p className="note-label">
+      <NoteLabel>
         <span>{note}</span>
-      </p>
+      </NoteLabel>
     </button>
   );
 };

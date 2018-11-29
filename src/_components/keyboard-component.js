@@ -14,7 +14,73 @@ import {
 } from '../_actions/points-action';
 
 import Key from './key-component';
-import './keyboard-component.css';
+
+import styled from 'styled-components';
+
+const AccidentalsContainer = styled.div`
+  position: relative;
+  display: flex;
+  max-width: 750px;
+  height: 300px;
+  margin: 0 auto;
+
+  .key {
+    display: flex;
+  }
+
+  .key--accidental.C {
+    left: 84px;
+  }
+  .key--accidental.D {
+    left: 191px;
+  }
+  .key--accidental.F {
+    left: 407px;
+  }
+  .key--accidental.G {
+    left: 513px;
+  }
+  .key--accidental.A {
+    left: 619px;
+  }
+  .key--accidental {
+    background: #1b1b1e;
+    color: #1b1b1e;
+    border: 1px solid #fff;
+    border-top: 1px solid transparent;
+    border-radius: 0 0 4px 4px;
+    cursor: pointer;
+    height: 66%;
+    z-index: 1;
+    position: absolute;
+    top: 0;
+    width: 46px;
+  }
+`;
+
+const KeyboardContainer = styled(AccidentalsContainer)`
+  border: 4px solid #1b1b1e;
+  border-radius: 6px 6px 0px 0px;
+  border-bottom: none;
+
+  .key {
+    display: flex;
+  }
+
+  .key--natural {
+    background: #f6f5f3;
+    border: 1px solid #888;
+    border-radius: 0 0 6px 6px;
+    cursor: pointer;
+    z-index: 0;
+    flex: 1;
+    margin-right: 1px;
+  }
+
+  .key--natural:last-child {
+    margin-right: 0;
+  }
+`;
 
 class Keyboard extends React.Component {
   componentDidMount() {
@@ -53,8 +119,8 @@ class Keyboard extends React.Component {
     let keys = ['C', 'D', 'E', 'F', 'G', 'A', 'B'];
     let accidentals = ['C#/Db', 'D#/Eb', 'F#/Gb', 'G#/Ab', 'A#/Bb'];
     return (
-      <div className="keyboard">
-        <div className="accidentals">
+      <KeyboardContainer>
+        <AccidentalsContainer>
           {accidentals.map(note => {
             return (
               <Key
@@ -66,7 +132,7 @@ class Keyboard extends React.Component {
               />
             );
           })}
-        </div>
+        </AccidentalsContainer>
 
         {keys.map(note => {
           return (
@@ -79,7 +145,7 @@ class Keyboard extends React.Component {
             />
           );
         })}
-      </div>
+      </KeyboardContainer>
     );
   }
 }
