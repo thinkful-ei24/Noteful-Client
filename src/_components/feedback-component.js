@@ -17,6 +17,7 @@ const FeedbackContainer = styled.div`
 `;
 
 export class Feedback extends React.Component {
+
   //Logic for feedback content and points count
   //based on user selecting the correct or incorrect key
   render() {
