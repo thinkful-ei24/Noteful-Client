@@ -5,7 +5,6 @@ import styled from 'styled-components';
 import { getCards } from '../_actions/card-actions';
 import DashNavigation from '../_components/dashNavigation-component';
 import placeholder from '../logo.svg';
-require('./progress-container.css');
 
 const ProgressContainer = styled.div`
   display: flex;
@@ -18,7 +17,7 @@ const ProgressContainer = styled.div`
 const ProgressHeader = styled.div`
   display: flex;
   justify-content: space-between;
-  
+
   h2 {
     font-family: omnes-pro, sans-serif;
     font-size: 4rem;
@@ -40,11 +39,11 @@ const ProgressNote = styled.div`
   flex-direction: column;
 
   @media (min-width: 550px) {
-    width: 45%
+    width: 45%;
   }
 
   @media (min-width: 720px) {
-    width: 28%
+    width: 28%;
   }
 `;
 
@@ -54,12 +53,12 @@ const ProgressBar = styled.div`
   height: 30px;
 
   .correct-bar {
-    width: ${props => props.incomplete ? 100 : props.correct}%;
-    background-color: ${props => props.incomplete ? 'black' : 'green'};
+    width: ${props => (props.incomplete ? 100 : props.correct)}%;
+    background-color: ${props => (props.incomplete ? '#D8D8D8' : '#0FBF68')};
   }
   .incorrect-bar {
-    width: ${props => props.incomplete ? 0 : props.incorrect}%;
-    background-color: red;
+    width: ${props => (props.incomplete ? 0 : props.incorrect)}%;
+    background-color: #db3d0e;
   }
 `;
 
@@ -87,8 +86,8 @@ class ProgressDisplay extends React.Component {
       let incorrectSize = 0;
       let incomplete = true;
       if (card.total) {
-        correctSize = card.correct / card.total * 100;
-        incorrectSize = (card.total - card.correct) / card.total * 100;
+        correctSize = (card.correct / card.total) * 100;
+        incorrectSize = ((card.total - card.correct) / card.total) * 100;
         incomplete = false;
       }
 
@@ -98,9 +97,13 @@ class ProgressDisplay extends React.Component {
             <h2>{card.note}</h2>
             <img src={placeholder} alt={`${card.note} note`} />
           </ProgressHeader>
-          <ProgressBar correct={correctSize} incorrect={incorrectSize} incomplete={incomplete}>
-            <div className="correct-bar"></div>
-            <div className="incorrect-bar"></div>
+          <ProgressBar
+            correct={correctSize}
+            incorrect={incorrectSize}
+            incomplete={incomplete}
+          >
+            <div className="correct-bar" />
+            <div className="incorrect-bar" />
           </ProgressBar>
           <ProgressCount>
             <h3 id="correct-count">{card.correct}</h3>

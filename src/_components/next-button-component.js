@@ -23,6 +23,10 @@ const NextBtn = styled.button`
     border: 2px solid #3d3e40;
     color: #3d3e40;
   }
+
+  :focus {
+    outline: #545559;
+  }
 `;
 
 const NextButton = props => {

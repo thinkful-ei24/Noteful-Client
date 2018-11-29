@@ -1,6 +1,5 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import { Redirect } from 'react-router-dom';
 
 import styled from 'styled-components';
 
@@ -58,15 +57,11 @@ class Dashboard extends React.Component {
   }
 
   render() {
-    if (!this.props.loggedIn) {
-      return <Redirect to="/" />;
-    }
-
     return (
       <React.Fragment>
-        <Notifications />
         <div className="dashboard">
           <DashNavigation />
+          <Notifications />
 
           <h1>You are learning the C Major notes</h1>
           <DashboardContainer>
