@@ -31,5 +31,5 @@ export function playSound(e) {
   const player = new Audio(source);
   player.autoplay = false;
 
-  player.play(source);
+  player.play(source).catch(e => e);
 }

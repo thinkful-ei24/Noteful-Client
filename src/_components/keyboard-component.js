@@ -55,6 +55,7 @@ const AccidentalsContainer = styled.div`
     position: absolute;
     top: 0;
     width: 46px;
+    border: none !important;
   }
 `;
 
@@ -62,14 +63,17 @@ const KeyboardContainer = styled(AccidentalsContainer)`
   border: 4px solid #1b1b1e;
   border-radius: 6px 6px 0px 0px;
   border-bottom: none;
+  border-top: 1px solid #1b1b1e;
 
   .key {
     display: flex;
+    border: 3px solid #fff;
+    border-top: none;
   }
 
   .key--natural {
-    background: #f6f5f3;
-    border: 1px solid #888;
+    background: #fff;
+    border: 1px solid #1b1b1e;
     border-radius: 0 0 6px 6px;
     cursor: pointer;
     z-index: 0;
@@ -79,6 +83,12 @@ const KeyboardContainer = styled(AccidentalsContainer)`
 
   .key--natural:last-child {
     margin-right: 0;
+  }
+
+  .key:focus,
+  .key:active {
+    border: 3px solid #4fb7ec;
+    outline: rgba(225, 225, 225, 0);
   }
 `;
 
