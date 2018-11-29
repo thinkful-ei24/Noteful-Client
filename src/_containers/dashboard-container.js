@@ -52,7 +52,6 @@ class Dashboard extends React.Component {
               <div className="screen">
                 <Points />
                 <Feedback />
-
                 <NextButton />
               </div>
               <NoteDisplay note={this.props.noteDisplayed} />
