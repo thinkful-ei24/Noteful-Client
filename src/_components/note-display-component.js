@@ -2,15 +2,16 @@ import React from 'react';
 import styled from 'styled-components';
 
 import staff from '../_images/sheet2.png';
-import note from '../_images/note.png';
+// import note from '../_images/note.png';
+import note from '../_images/quarter-note.svg';
 import ledger from '../_images/ledger.svg';
 import { playSound } from '../utils/sound-player';
 require('./note-display-component.css');
 
 const StyledNote = styled.img`
   position: relative;
-  height: 118px;
-  left: 205px;
+  height: 123px;
+  left: 230px;
   z-index: 2;
 `;
 
@@ -23,13 +24,13 @@ const Ledger = styled.img`
 export default function NoteDisplay(props) {
   // list of note positions
   const notes = {
-    A: 207,
-    B: 225,
-    C: 127,
-    D: 141,
-    E: 155,
-    F: 172,
-    G: 190
+    A: 203,
+    B: 220,
+    C: 120,
+    D: 133,
+    E: 150,
+    F: 168,
+    G: 185
   };
   let lastNote = '';
   const updateNote = value => {
