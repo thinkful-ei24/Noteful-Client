@@ -14,7 +14,7 @@ export class Notifications extends React.Component {
     window.NotifComponent = this;
   }
 
-  send = () => {
+  send() {
     if (this.props.loggedIn) {
       this.props.dispatch(
         notifSend({
@@ -27,7 +27,7 @@ export class Notifications extends React.Component {
       );
       this.props.dispatch(clearNotif());
     }
-  };
+  }
 
   render() {
     return <Notifs />;
