@@ -50,7 +50,6 @@ export default function NoteDisplay(props) {
         // if wrong set to hinge?
         //className="animated tada"
         style={{ bottom: updateNote(props.note) }}
-        // bottom={updateNote(props.note)}
         id="note-img"
         src={note}
         alt="note"
