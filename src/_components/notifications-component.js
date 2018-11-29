@@ -3,11 +3,14 @@ import React from 'react';
 import { connect } from 'react-redux';
 import { clearNotif } from '../_actions/auth-action';
 
+import 'redux-notifications/lib/styles.css';
+
+//set up notifications variable
 const { notifSend } = notifActions;
 
 export class Notifications extends React.Component {
   constructor() {
-    super(null);
+    super();
     window.NotifComponent = this;
   }
 
@@ -15,9 +18,11 @@ export class Notifications extends React.Component {
     if (this.props.loggedIn) {
       this.props.dispatch(
         notifSend({
-          message: `Hello, ${this.props.user.name}`,
+          message: `Hello there, ${
+            this.props.user.name
+          }. Welcome back to Noteful.`,
           kind: 'info',
-          dismissAfter: 3000
+          dismissAfter: 4000
         })
       );
       this.props.dispatch(clearNotif());

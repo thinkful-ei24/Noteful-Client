@@ -64,9 +64,9 @@ class Dashboard extends React.Component {
 
     return (
       <React.Fragment>
-        <Notifications />
         <div className="dashboard">
           <DashNavigation />
+          <Notifications />
 
           <h1>You are learning the C Major notes</h1>
           <DashboardContainer>
