@@ -6,12 +6,12 @@ import { clearNotif } from '../_actions/auth-action';
 const { notifSend } = notifActions;
 
 export class Notifications extends React.Component {
-  constructor() {
-    super(null);
+  constructor(props) {
+    super(props);
     window.NotifComponent = this;
   }
 
-  send = () => {
+  send() {
     if (this.props.loggedIn) {
       this.props.dispatch(
         notifSend({
@@ -22,7 +22,7 @@ export class Notifications extends React.Component {
       );
       this.props.dispatch(clearNotif());
     }
-  };
+  }
 
   render() {
     return <Notifs />;
