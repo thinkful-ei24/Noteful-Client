@@ -15,10 +15,6 @@ import Notifications from '../_components/notifications-component';
 import { fetchNote } from '../_actions/notes-action';
 import { getCards } from '../_actions/card-actions';
 
-//TODO: add in trigger for this.props.dispatch(this.send()); on login
-
-const { notifSend } = notifActions;
-
 //Styles for Dash
 const DashboardContainer = styled.section`
   background: #545559;
