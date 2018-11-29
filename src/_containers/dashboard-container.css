@@ -1,0 +1,25 @@
+.dashboard-container {
+  background: #545559;
+  max-width: 960px;
+  min-height: 590px;
+  margin: 0 auto;
+  border-radius: 30px;
+  box-shadow: 7px 7px #1b1b1e;
+  margin-bottom: 50px;
+}
+
+.info {
+  display: flex;
+  flex-direction: row-reverse;
+  justify-content: center;
+  height: 100%;
+  padding-top: 46px;
+}
+
+.screen {
+  background: #1b1b1e;
+  border-radius: 4px;
+  width: 274px;
+  height: 145px;
+  border: 3px solid;
+}

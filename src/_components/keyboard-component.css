@@ -1,10 +1,16 @@
+.keyboard {
+  border: 6px solid #1b1b1e;
+  border-radius: 6px 6px 0px 0px;
+  border-bottom: none;
+}
+
 .keyboard,
 .accidentals {
   /* Used for absolute positioning of key--accidental elements */
   position: relative;
   /* Used to lay out key--natural elements */
   display: flex;
-  max-width: 800px;
+  max-width: 750px;
   height: 300px;
   margin: 0 auto;
 }
@@ -18,7 +24,8 @@
    * Styles of accidental notes (flat or sharp)
    */
 .key--accidental {
-  background: #555;
+  background: #1b1b1e;
+  color: #1b1b1e;
   border: 1px solid #fff;
   border-top: 1px solid transparent;
   border-radius: 0 0 4px 4px;
@@ -29,23 +36,23 @@
   /* Use absolute positioning along with inline styles specified in JS to put keys in correct locations. */
   position: absolute;
   top: 0;
-  width: 50px;
+  width: 46px;
 }
 
 .key--accidental.C {
-  left: 90px;
+  left: 84px;
 }
 .key--accidental.D {
-  left: 203px;
+  left: 191px;
 }
 .key--accidental.F {
-  left: 433px;
+  left: 407px;
 }
 .key--accidental.G {
-  left: 548px;
+  left: 513px;
 }
 .key--accidental.A {
-  left: 662px;
+  left: 619px;
 }
 /*
    * Styles of natural notes (white keys)

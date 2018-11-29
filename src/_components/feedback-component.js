@@ -7,9 +7,9 @@ export class Feedback extends React.Component {
     super(props);
     this.state = {
       feedbackTypes: {
-        general: 'yellow',
-        correctGuess: 'green',
-        incorrectGuess: 'red'
+        general: '#F1BB01',
+        correctGuess: '#0FBF68',
+        incorrectGuess: '#DB3D0E'
       }
     };
   }
@@ -22,7 +22,7 @@ export class Feedback extends React.Component {
     let feedbackType;
     //if there isn't a selectedKey keep up the hello username message
     if (!this.props.selectedKey) {
-      feedbackMessage = `Hello, ${this.props.user.name}`;
+      feedbackMessage = 'What note is this?';
       feedbackType = 'general';
     }
     // if the note displayed and pressed are the same increment up a point
@@ -43,7 +43,7 @@ export class Feedback extends React.Component {
     return (
       <div
         className="feedback-container"
-        style={{ backgroundColor: this.state.feedbackTypes[feedbackType] }}
+        style={{ color: this.state.feedbackTypes[feedbackType] }}
       >
         <h2 id="feedback-message">{feedbackMessage}</h2>
       </div>

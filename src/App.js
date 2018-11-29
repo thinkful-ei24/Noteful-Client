@@ -1,6 +1,5 @@
 import React from 'react';
 import { BrowserRouter, Route, Switch } from 'react-router-dom';
-
 import Home from './pages/home';
 import SignUp from './_containers/signup-container';
 import LoginForm from './_containers/login-container';
