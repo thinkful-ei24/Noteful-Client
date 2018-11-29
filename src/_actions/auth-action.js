@@ -1,6 +1,7 @@
 import jwtDecode from 'jwt-decode';
 import { SubmissionError } from 'redux-form';
 import { API_BASE_URL } from '../config';
+import Notifications from '../_components/notifications-component';
 
 export const SET_AUTH_TOKEN = 'SET_AUTH_TOKEN';
 export const setAuthToken = authToken => ({
@@ -27,6 +28,11 @@ export const fetchAuthSuccess = user => ({
 export const FETCH_AUTH_FAILURE = 'FETCH_AUTH_FAILURE';
 export const fetchAuthFailure = () => ({
   type: FETCH_AUTH_FAILURE
+});
+
+export const CLEAR_NOTIF = 'CLEAR_NOTIF';
+export const clearNotif = () => ({
+  type: CLEAR_NOTIF
 });
 
 export const refreshAuthToken = () => (dispatch, getState) => {
