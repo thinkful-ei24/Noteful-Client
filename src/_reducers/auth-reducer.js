@@ -3,12 +3,14 @@ import {
   FETCH_AUTH_SUCCESS,
   FETCH_AUTH_FAILURE,
   SET_AUTH_TOKEN,
-  CLEAR_AUTH_TOKEN
+  CLEAR_AUTH_TOKEN,
+  CLEAR_NOTIF
 } from '../_actions/auth-action';
 
 const initialState = {
   authToken: null,
   user: null,
+  notifLoggedIn: false,
   loading: false,
   error: null
 };
@@ -22,7 +24,8 @@ export const authReducer = (state = initialState, action) => {
     return Object.assign({}, state, {
       loading: false,
       error: null,
-      user: action.user
+      user: action.user,
+      notifLoggedIn: true
     });
   } else if (action.type === FETCH_AUTH_FAILURE) {
     return Object.assign({}, state, {
@@ -37,6 +40,10 @@ export const authReducer = (state = initialState, action) => {
     return Object.assign({}, state, {
       authToken: null,
       user: null
+    });
+  } else if (action.type === CLEAR_NOTIF) {
+    return Object.assign({}, state, {
+      notifLoggedIn: false
     });
   }
   return state;

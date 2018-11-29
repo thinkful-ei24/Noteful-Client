@@ -1,11 +1,6 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import { Redirect } from 'react-router-dom';
-import {
-  reducer as notifReducer,
-  actions as notifActions,
-  Notifs
-} from 'redux-notifications';
 
 import styled from 'styled-components';
 
@@ -15,11 +10,13 @@ import Keyboard from '../_components/keyboard-component';
 import Feedback from '../_components/feedback-component';
 import NoteDisplay from '../_components/note-display-component';
 import NextButton from '../_components/next-button-component';
+import Notifications from '../_components/notifications-component';
 
 import { fetchNote } from '../_actions/notes-action';
 import { getCards } from '../_actions/card-actions';
 
 //TODO: add in trigger for this.props.dispatch(this.send()); on login
+
 const { notifSend } = notifActions;
 
 //Styles for Dash
@@ -58,17 +55,10 @@ const Screen = styled.div`
 `;
 
 class Dashboard extends React.Component {
-  componentDidMount() {
-    this.props.dispatch(fetchNote());
-    this.props.dispatch(getCards());
-  }
-
-  send() {
-    this.props.dispatch(notifSend)({
-      message: `Hello, ${this.props.user.name}`,
-      kind: 'info',
-      dismissAfter: 3000
-    });
+  async componentDidMount() {
+    await this.props.dispatch(fetchNote());
+    await this.props.dispatch(getCards());
+    window.NotifComponent.send();
   }
 
   render() {
@@ -78,7 +68,7 @@ class Dashboard extends React.Component {
 
     return (
       <React.Fragment>
-        <Notifs />
+        <Notifications />
         <div className="dashboard">
           <DashNavigation />
 
