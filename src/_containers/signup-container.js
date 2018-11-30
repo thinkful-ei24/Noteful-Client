@@ -3,6 +3,7 @@ import { Field, reduxForm, focus } from 'redux-form';
 import { connect } from 'react-redux';
 import { Redirect } from 'react-router-dom';
 
+import styled from 'styled-components';
 import Navigation from '../_components/navigation-component';
 
 import { signUpUser } from '../_actions/users-action';
@@ -11,6 +12,82 @@ import { login } from '../_actions/auth-action';
 import Input from '../_components/input-component';
 import { required, nonEmpty, length, isTrimmed } from '../utils/validators';
 const passwordLength = length({ min: 10, max: 72 });
+
+const SignupContainer = styled.nav`
+    width: 350px;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 10%;
+    margin-bottom: 90%;
+    padding: 30px;
+    text-align: center;
+    background-color: beige;
+    border: 1px solid black;
+    border-radius: 5px;
+    -moz-box-shadow: 3px 3px 20px 0px #3e7327;
+    -webkit-box-shadow: 3px 3px 20px 0px #3e7327;
+    box-shadow: 3px 3px 20px 0px #3e7327;
+
+  #username, #password, #name {
+    display: inline-block;
+    width: 250px;
+    height: 30px;
+    margin-left: auto;
+    margin-right: auto;
+    border: 1px solid black;
+    border-radius: 5px;
+    font-size: 18px;
+  }
+
+  label {
+    display: block;
+    font-size: 26px;
+  }
+
+  #signup-btn {
+    margin-top: 20px;
+    -moz-box-shadow: 0px 10px 14px -7px #3e7327;
+    -webkit-box-shadow: 0px 10px 14px -7px #3e7327;
+    box-shadow: 0px 10px 14px -7px #3e7327;
+    background:-webkit-gradient(linear, left top, left bottom, color-stop(0.05, #77b55a), color-stop(1, #72b352));
+    background:-moz-linear-gradient(top, #77b55a 5%, #72b352 100%);
+    background:-webkit-linear-gradient(top, #77b55a 5%, #72b352 100%);
+    background:-o-linear-gradient(top, #77b55a 5%, #72b352 100%);
+    background:-ms-linear-gradient(top, #77b55a 5%, #72b352 100%);
+    background:linear-gradient(to bottom, #77b55a 5%, #72b352 100%);
+    filter:progid:DXImageTransform.Microsoft.gradient(startColorstr='#77b55a', endColorstr='#72b352',GradientType=0);
+    background-color:#77b55a;
+    -moz-border-radius:10px;
+    -webkit-border-radius:10px;
+    border-radius:10px;
+    border:1px solid #4b8f29;
+    display:inline-block;
+    cursor:pointer;
+    color:#ffffff;
+    font-family:Arial;
+    font-size:16px;
+    font-weight:bold;
+    padding:10px 30px;
+    text-decoration:none;
+    text-shadow:0px 1px 0px #5b8a3c;
+  }
+
+  #signup-btn:hover {
+    background:-webkit-gradient(linear, left top, left bottom, color-stop(0.05, #72b352), color-stop(1, #77b55a));
+    background:-moz-linear-gradient(top, #72b352 5%, #77b55a 100%);
+    background:-webkit-linear-gradient(top, #72b352 5%, #77b55a 100%);
+    background:-o-linear-gradient(top, #72b352 5%, #77b55a 100%);
+    background:-ms-linear-gradient(top, #72b352 5%, #77b55a 100%);
+    background:linear-gradient(to bottom, #72b352 5%, #77b55a 100%);
+    filter:progid:DXImageTransform.Microsoft.gradient(startColorstr='#72b352', endColorstr='#77b55a',GradientType=0);
+    background-color:#72b352;
+  }
+
+  #signup-btn:active {
+    position:relative;
+    top:1px;
+  }
+`;
 
 export function SignUpForm(props) {
   if (props.loggedIn) {
@@ -28,38 +105,43 @@ export function SignUpForm(props) {
   return (
     <React.Fragment>
       <Navigation />
-      <form
-        className="login-form"
-        onSubmit={props.handleSubmit(values => {
-          const { username, password, name } = values;
-          const user = { username, password, name };
-          return props
-            .dispatch(signUpUser(user))
-            .then(() => props.dispatch(login(values)));
-        })}
-      >
-        {error}
-        <label htmlFor="name">Name</label>
-        <Field component={Input} type="text" name="name" />
-        <label htmlFor="username">Username</label>
-        <Field
-          component={Input}
-          type="text"
-          name="username"
-          validate={[required, nonEmpty, isTrimmed]}
-        />
-        <label htmlFor="password">Password</label>
-        <Field
-          component={Input}
-          type="password"
-          name="password"
-          validate={[required, passwordLength, isTrimmed]}
-        />
+      <SignupContainer>
+        <form
+          className="login-form"
+          onSubmit={props.handleSubmit(values => {
+            const { username, password, name } = values;
+            const user = { username, password, name };
+            return props
+              .dispatch(signUpUser(user))
+              .then(() => props.dispatch(login(values)));
+          })}
+        >
+          {error}
+          <Field
+            component={Input}
+            type="text"
+            name="name"
+            label="Name" />
+          <Field
+            component={Input}
+            type="text"
+            name="username"
+            label="Username"
+            validate={[required, nonEmpty, isTrimmed]}
+          />
+          <Field
+            component={Input}
+            type="password"
+            name="password"
+            label="Password"
+            validate={[required, passwordLength, isTrimmed]}
+          />
 
-        <button type="submit" disabled={props.pristine || props.submitting}>
-          Sign up
-        </button>
-      </form>
+          <button type="submit" id="signup-btn" disabled={props.pristine || props.submitting}>
+            Sign up
+          </button>
+        </form>
+      </SignupContainer>
     </React.Fragment>
   );
 }
