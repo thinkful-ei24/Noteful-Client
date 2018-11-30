@@ -24,6 +24,7 @@ import FormContainer from './form-styles';
 
 const passwordLength = length({ min: 10, max: 72 });
 
+
 export function SignUpForm(props) {
   if (props.loggedIn) {
     return <Redirect to="/dashboard" />;

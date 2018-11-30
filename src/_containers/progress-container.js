@@ -3,15 +3,21 @@ import { connect } from 'react-redux';
 
 import { getCards } from '../_actions/card-actions';
 import DashNavigation from '../_components/dashNavigation-component';
-import placeholder from '../logo.svg';
 
-//-------------------------------------------------
+import aImg from '../_images/A-sm.png';
+import bImg from '../_images/B-sm.png';
+import cImg from '../_images/C-sm.png';
+import dImg from '../_images/D-sm.png';
+import eImg from '../_images/E-sm.png';
+import fImg from '../_images/F-sm.png';
+import gImg from '../_images/G-sm.png';
+// ------------------------------------------------
 // STYLES
 // ------------------------------------------------
 
 import styled from 'styled-components';
 
-const ProgressContainer = styled.div`
+const ProgressContainer = styled.main`
   display: flex;
   flex-wrap: wrap;
   max-width: 960px;
@@ -30,10 +36,9 @@ const ProgressHeader = styled.div`
   }
 
   img {
-    width: auto;
-    height: 80px;
     margin: 0;
     align-self: flex-end;
+    margin-bottom: 10px;
   }
 `;
 
@@ -61,12 +66,12 @@ const ProgressBar = styled.div`
   .correct-bar {
     width: ${props => (props.incomplete ? 100 : props.correct)}%;
     background-color: ${props => (props.incomplete ? '#D8D8D8' : '#0FBF68')};
-    border-radius: 6px 0 0 6px;
+    border-radius: ${props => props.incorrect ? '6px 0 0 6px' : '6px'}
   }
   .incorrect-bar {
     width: ${props => (props.incomplete ? 0 : props.incorrect)}%;
     background-color: #db3d0e;
-    border-radius: 0 6px 6px 0;
+    border-radius: ${props => props.correct ? '0 6px 6px 0' : '6px'};
   }
 `;
 
@@ -86,6 +91,15 @@ const ProgressCount = styled.div`
 //-------------------------------------------------
 // COMPONENT
 // ------------------------------------------------
+const progressImg = {
+  A: aImg,
+  B: bImg,
+  C: cImg,
+  D: dImg,
+  E: eImg,
+  F: fImg,
+  G: gImg
+};
 
 class ProgressDisplay extends React.Component {
   componentDidMount() {
@@ -108,7 +122,7 @@ class ProgressDisplay extends React.Component {
           <ProgressHeader>
             <h2>{card.note}</h2>
             {/* TODO: swap out placeholder image on progress */}
-            <img src={placeholder} alt={`${card.note} note`} />
+            <img src={progressImg[card.note]} alt={`${card.note} note`} />
           </ProgressHeader>
           <ProgressBar
             correct={correctSize}
@@ -119,8 +133,8 @@ class ProgressDisplay extends React.Component {
             <div className="incorrect-bar" />
           </ProgressBar>
           <ProgressCount>
-            <h3 id="correct-count">{card.correct}</h3>
-            <h3 id="incorrect-count">{card.total - card.correct}</h3>
+            <h3>{card.correct}</h3>
+            <h3>{card.total - card.correct}</h3>
           </ProgressCount>
         </ProgressNote>
       );

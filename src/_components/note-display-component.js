@@ -1,7 +1,6 @@
 import React from 'react';
 
 import staff from '../_images/sheet-b.png';
-// import note from '../_images/note.png';
 import note from '../_images/quarter-note.svg';
 import ledger from '../_images/ledger.svg';
 import { playSound } from '../utils/sound-player';
@@ -63,10 +62,10 @@ const NoteDisplayContainer = styled.div`
     z-index: 1;
   }
 
-  @media (min-width: 885px) {
+  @media (min-width: 550px) {
     width: 531px;
     height: 211px;
-    margin: 0px 28px 28px 0;
+    margin: 10px auto;
 
     #sheet-img {
       width: 531px;
@@ -87,6 +86,10 @@ const NoteDisplayContainer = styled.div`
       z-index: 1;
     }
   }
+
+  @media (min-width: 885px) {
+    margin: 0px 28px 28px 0;
+  }
 `;
 
 
@@ -98,6 +101,7 @@ const NoteDisplayContainer = styled.div`
 export default function NoteDisplay(props) {
   // list of note positions
   let lastNote = '';
+
   const updateNote = value => {
     if (lastNote !== props.note) {
       playSound(value);
@@ -117,9 +121,7 @@ export default function NoteDisplay(props) {
     <NoteDisplayContainer note={props.note}>
       <img id="sheet-img" src={staff} alt="notation background" />
       <img
-        // tada, rubberBand, jello, wobble, slideInDown, rollIn
-        // if wrong set to hinge?
-        //className="animated tada"
+        className="animated tada"
         id="note-img"
         src={note}
         alt="note"
