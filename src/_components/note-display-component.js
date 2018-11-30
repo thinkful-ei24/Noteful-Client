@@ -12,23 +12,55 @@ import { playSound } from '../utils/sound-player';
 
 import styled from 'styled-components';
 
+const mobileNotePosition = {
+  C: '-10px',
+  D: '-1px',
+  E: '8px',
+  F: '17px',
+  G: '26px',
+  A: '35px',
+  B: '44px'
+};
+
+const notePosition = {
+  C: '-16px',
+  D: '-3px',
+  E: '14px',
+  F: '31px',
+  G: '48px',
+  A: '65px',
+  B: '82px'
+};
+
 const NoteDisplayContainer = styled.div`
-  width: 289px;
+  position: relative;
+  width: 274px;
   height: 121px;
-  padding: 0px 25px 0 20px;
+  padding: 0px 20px 0 20px;
   margin: 20px auto;
   background: #1b1b1e;
   border-radius: 16px;
   border: 3px solid;
 
   #sheet-img {
-    width: 300px;
+    width: 280px;
+    margin: 10px auto;
   }
 
   #note-img {
-    position: relative;
+    position: absolute;
     height: 80px;
-    left: 115px;
+    left: 140px;
+    bottom: ${props => mobileNotePosition[props.note]};
+    z-index: 2;
+  }
+
+  #ledger-img {
+    position: absolute;
+    left: 143px;
+    bottom: 6px;
+    height: 2px;
+    z-index: 1;
   }
 
   @media (min-width: 885px) {
@@ -39,26 +71,24 @@ const NoteDisplayContainer = styled.div`
     #sheet-img {
       width: 531px;
     }
+
     #note-img {
-      position: relative;
-      height: 110px;
-      left: 205px;
+      position: absolute;
+      height: 120px;
+      left: 240px;
+      bottom: ${props => notePosition[props.note]};
+    }
+
+    #ledger-img {
+      position: absolute;
+      left: 233px;
+      bottom: 6px;
+      height: 4px;
+      z-index: 1;
     }
   }
 `;
 
-const StyledNote = styled.img`
-  position: relative;
-  height: 123px;
-  left: 230px;
-  z-index: 2;
-`;
-
-const Ledger = styled.img`
-  position: relative;
-  left: 205px;
-  z-index: 1;
-`;
 
 //-------------------------------------------------
 // COMPONENT
@@ -67,39 +97,29 @@ const Ledger = styled.img`
 //FIXME: finish responsive styles and notes positioning on mobile
 export default function NoteDisplay(props) {
   // list of note positions
-  const notes = {
-    A: 192,
-    B: 211,
-    C: 111,
-    D: 125,
-    E: 142,
-    F: 159,
-    G: 176
-  };
   let lastNote = '';
   const updateNote = value => {
     if (lastNote !== props.note) {
-      console.log(value);
       playSound(value);
     }
     lastNote = value;
-    return notes[value];
   };
 
   const ledgerDisplay =
     props.note === 'C' ? (
-      <Ledger src={ledger} alt="ledger" style={{ bottom: 141 }} />
+      <img src={ledger} id="ledger-img" alt="ledger"/>
     ) : (
       ''
     );
+
+  updateNote(props.note);
   return (
-    <NoteDisplayContainer>
+    <NoteDisplayContainer note={props.note}>
       <img id="sheet-img" src={staff} alt="notation background" />
-      <StyledNote
+      <img
         // tada, rubberBand, jello, wobble, slideInDown, rollIn
         // if wrong set to hinge?
         //className="animated tada"
-        style={{ bottom: updateNote(props.note) }}
         id="note-img"
         src={note}
         alt="note"
