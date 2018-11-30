@@ -54,6 +54,14 @@ const FormContainer = styled.nav`
     position: relative;
     top: 1px;
   }
+
+  input:-webkit-autofill,
+  input:-webkit-autofill:hover,
+  input:-webkit-autofill:focus,
+  input:-webkit-autofill:active {
+    -webkit-transition-delay: 9999s;
+    -webkit-transition: color 9999s ease-out, background-color 9999s ease-out;
+}
 `;
 
 export default FormContainer;
