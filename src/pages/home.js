@@ -4,7 +4,11 @@ import { Link } from 'react-router-dom';
 import { Redirect } from 'react-router-dom';
 
 import Navigation from '../_components/navigation-component';
+import Keyboard from '../_components/keyboard-component';
 import Footer from '../_components/footer-component';
+
+import sheetMusic from '../_images/sheet.png';
+import keyboard from '../_images/keyboard.png';
 
 //-------------------------------------------------
 // STYLES
@@ -109,6 +113,62 @@ const HomeContainer = styled.div`
 const MainBody = styled.section`
   background: #1b1b1e;
   height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+
+  h2,
+  div.details {
+    max-width: 960px;
+    margin: 0 auto;
+  }
+
+  h2 {
+    color: #fff;
+    font-size: 2.75rem;
+    text-align: center;
+    max-width: 700px;
+    margin-top: 160px;
+  }
+
+  div.detail-box {
+    display: flex;
+    max-width: 1100px;
+    margin: 160px auto;
+
+    h3 {
+      font-size: 1.75rem;
+      color: #f1bb01;
+      font-weight: 500;
+      letter-spacing: 1px;
+      margin: 0;
+    }
+    p {
+      color: #fff;
+      font-size: 1.4em;
+      line-height: 1.35em;
+      letter-spacing: 1px;
+      margin-top: 15px;
+    }
+  }
+
+  div.detail-box.left p {
+    margin-right: 80px;
+  }
+  div.detail-box.right p,
+  div.detail-box.right h3 {
+    margin-left: 80px;
+  }
+
+  div.detail-box.left img {
+    max-height: 183px;
+    margin-top: 25px;
+  }
+
+  div.detail-box.right img {
+    max-height: 186px;
+    margin-top: 10px;
+  }
 `;
 
 //-------------------------------------------------
@@ -141,8 +201,29 @@ const Home = props => {
         </Link>
       </div>
       <MainBody>
-        <div className="overview">
-          <p>copy explaining how it works...</p>
+        <h2>Start out simple by learning just the Major C notes</h2>
+        <div className="detail-box left">
+          <div className="details">
+            <h3>One note at a time</h3>
+            <p>
+              Noteful will present you with a single note to learn at a time.
+              We'll keep track of how many you get right and wrong and show you
+              the notes again based on a space repetition algorithm. This
+              repetition helps you learn in no time.
+            </p>
+          </div>
+          <img src={sheetMusic} alt="notes on sheet music" />
+        </div>
+        <div className="detail-box right">
+          <img src={keyboard} alt="piano keys" />
+          <div className="details">
+            <h3>Learn the piano keys</h3>
+            <p>
+              As an added bonus, as you play you'll learn the location of each
+              note on piano keys and with each key press the note will ring out
+              making it that much easier to learn the notes by ear as well.
+            </p>
+          </div>
         </div>
       </MainBody>
       <Footer />

@@ -1,11 +1,43 @@
 import React from 'react';
 
+//-------------------------------------------------
+// STYLES
+// ------------------------------------------------
+
+import styled from 'styled-components';
+
+const FooterContainer = styled.footer`
+  background: #545559;
+
+  p {
+    margin: 0;
+    padding: 25px;
+    text-align: center;
+    letter-spacing: 1px;
+    color: #0fbf68;
+
+    a {
+      color: #0fbf68;
+      font-weight: 600;
+    }
+  }
+`;
+
+//-------------------------------------------------
+// COMPONENT
+// ------------------------------------------------
+
 export default function Footer() {
   return (
     <React.Fragment>
-      <footer role="contentinfo">
-        <p>made w/ ❤ by Kent, Chelsea, and Shane</p>
-      </footer>
+      <FooterContainer>
+        <p>
+          made w/ 🦄&amp; {'  '}☕️ by{' '}
+          <a href="https://github.com/kenttoku">Kent</a>,{'  '}
+          <a href="https://github.com/clkent">Chelsea</a>, &amp; {'  '}
+          <a href="https://github.com/slupton89">Shane</a>
+        </p>
+      </FooterContainer>
     </React.Fragment>
   );
 }
