@@ -63,10 +63,10 @@ const NoteDisplayContainer = styled.div`
     z-index: 1;
   }
 
-  @media (min-width: 885px) {
+  @media (min-width: 550px) {
     width: 531px;
     height: 211px;
-    margin: 0px 28px 28px 0;
+    margin: 10px auto;
 
     #sheet-img {
       width: 531px;
@@ -86,6 +86,10 @@ const NoteDisplayContainer = styled.div`
       height: 4px;
       z-index: 1;
     }
+  }
+
+  @media (min-width: 885px) {
+    margin: 0px 28px 28px 0;
   }
 `;
 
