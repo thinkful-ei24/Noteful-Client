@@ -265,7 +265,7 @@ const Home = props => {
         </div>
 
         <p>
-          Using the power of space repetition learning you'll find yourself
+          Using the power of spaced repetition learning you'll find yourself
           reading sheet music in no time – best of all, it's free.
         </p>
         <Link
@@ -284,7 +284,7 @@ const Home = props => {
             <p>
               Noteful will present you with a single note to learn at a time.
               We'll keep track of how many you get right and wrong and show you
-              the notes again based on a space repetition algorithm. This
+              the notes again based on a spaced repetition algorithm. This
               repetition helps you learn in no time.
             </p>
           </div>
