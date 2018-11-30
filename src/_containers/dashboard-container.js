@@ -17,7 +17,9 @@ import { getCards } from '../_actions/card-actions';
 //Styles for Dash
 const DashboardContainer = styled.section`
   background: #545559;
-  width: 960px;
+  width: 100vw;
+  max-width: 960px;
+  position: relative;
   min-height: 590px;
   margin: 0 auto;
   border-radius: 20px;

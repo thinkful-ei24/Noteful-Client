@@ -10,12 +10,13 @@ import { clearCard } from '../_actions/card-actions';
 import styled from 'styled-components';
 
 const NavigationContainer = styled.nav`
-  max-width: 95%;
-  margin: 20px auto;
+  width: 95vw;
+  margin: 0 auto;
   display: grid;
   align-items: center;
   grid-template-columns: 10fr 1fr 1fr;
   text-align: center;
+  padding-top: 20px;
 
   .logo {
     font-family: filson-pro, sans-serif;
@@ -51,7 +52,7 @@ const NavigationContainer = styled.nav`
   button {
     margin: 10px 0;
     height: 43px;
-    border: 2px solid #fff;
+    border: 2px solid #735a02;
     border-radius: 28px;
     background: #f1bb01;
     color: #735a02;
