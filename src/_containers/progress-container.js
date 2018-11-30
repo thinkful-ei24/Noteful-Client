@@ -17,7 +17,7 @@ import gImg from '../_images/G-sm.png';
 
 import styled from 'styled-components';
 
-const ProgressContainer = styled.div`
+const ProgressContainer = styled.main`
   display: flex;
   flex-wrap: wrap;
   max-width: 960px;
@@ -133,8 +133,8 @@ class ProgressDisplay extends React.Component {
             <div className="incorrect-bar" />
           </ProgressBar>
           <ProgressCount>
-            <h3 id="correct-count">{card.correct}</h3>
-            <h3 id="incorrect-count">{card.total - card.correct}</h3>
+            <h3>{card.correct}</h3>
+            <h3>{card.total - card.correct}</h3>
           </ProgressCount>
         </ProgressNote>
       );
