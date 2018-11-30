@@ -1,8 +1,18 @@
 import React from 'react';
 import { NavLink } from 'react-router-dom';
 
+//-------------------------------------------------
+// STYLES
+// ------------------------------------------------
+
+import NavigationContainer from './navigation-styles';
+
+//-------------------------------------------------
+// COMPONENT
+// ------------------------------------------------
+
 const Navigation = () => (
-  <nav role="navigation">
+  <NavigationContainer>
     <NavLink
       aria-label="Noteful Logo"
       to="/"
@@ -19,14 +29,10 @@ const Navigation = () => (
     >
       Sign Up
     </NavLink>
-    <NavLink
-      aria-label="link to login page"
-      to="/login"
-      activeClassName="is-active"
-    >
+    <NavLink aria-label="link to login page" to="/login" className="button">
       Log In
     </NavLink>
-  </nav>
+  </NavigationContainer>
 );
 
 export default Navigation;
