@@ -60,7 +60,6 @@ const NavigationContainer = styled.nav`
 
   .button {
     padding: 10px 5px 11px 5px;
-    font-size: 0.8em;
     letter-spacing: 3px;
   }
 
