@@ -7,6 +7,11 @@ import Input from '../_components/input-component';
 import Navigation from '../_components/navigation-component';
 import { login } from '../_actions/auth-action';
 
+
+//-------------------------------------------------
+// STYLES
+// ------------------------------------------------
+
 const LoginContainer = styled.nav`
   width: 350px;
   margin-left: auto;
@@ -32,6 +37,13 @@ const LoginContainer = styled.nav`
     border: 1px solid black;
     border-radius: 5px;
     font-size: 18px;
+  }
+
+  input:-webkit-autofill,
+  input:-webkit-autofill:hover,
+  input:-webkit-autofill:focus,
+  input:-webkit-autofill:active  {
+      -webkit-box-shadow: 0 0 0 30px white inset;
   }
 
   label {
@@ -83,6 +95,10 @@ const LoginContainer = styled.nav`
     top:1px;
   }
 `;
+
+//-------------------------------------------------
+// COMPONENT
+// ------------------------------------------------
 
 export function LoginForm(props) {
   let nav;
