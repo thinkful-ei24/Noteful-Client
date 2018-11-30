@@ -17,7 +17,7 @@ import gImg from '../_images/G-sm.png';
 
 import styled from 'styled-components';
 
-const ProgressContainer = styled.div`
+const ProgressContainer = styled.main`
   display: flex;
   flex-wrap: wrap;
   max-width: 960px;
@@ -66,12 +66,12 @@ const ProgressBar = styled.div`
   .correct-bar {
     width: ${props => (props.incomplete ? 100 : props.correct)}%;
     background-color: ${props => (props.incomplete ? '#D8D8D8' : '#0FBF68')};
-    border-radius: 6px 0 0 6px;
+    border-radius: ${props => props.incorrect ? '6px 0 0 6px' : '6px'}
   }
   .incorrect-bar {
     width: ${props => (props.incomplete ? 0 : props.incorrect)}%;
     background-color: #db3d0e;
-    border-radius: 0 6px 6px 0;
+    border-radius: ${props => props.correct ? '0 6px 6px 0' : '6px'};
   }
 `;
 
@@ -133,8 +133,8 @@ class ProgressDisplay extends React.Component {
             <div className="incorrect-bar" />
           </ProgressBar>
           <ProgressCount>
-            <h3 id="correct-count">{card.correct}</h3>
-            <h3 id="incorrect-count">{card.total - card.correct}</h3>
+            <h3>{card.correct}</h3>
+            <h3>{card.total - card.correct}</h3>
           </ProgressCount>
         </ProgressNote>
       );
