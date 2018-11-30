@@ -57,6 +57,24 @@ const AccidentalsContainer = styled.div`
     width: 46px;
     border: none !important;
   }
+
+  @media (min-width: 980px) {
+    .key--accidental.C {
+      left: 84px;
+    }
+    .key--accidental.D {
+      left: 191px;
+    }
+    .key--accidental.F {
+      left: 407px;
+    }
+    .key--accidental.G {
+      left: 513px;
+    }
+    .key--accidental.A {
+      left: 619px;
+    }
+  }
 `;
 
 const KeyboardContainer = styled(AccidentalsContainer)`

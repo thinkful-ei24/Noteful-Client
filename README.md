@@ -1,44 +1,177 @@
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+Learn to read music!
 
-## Available Scripts
+[Noteful](https://learn-noteful.herokuapp.com/)
 
-In the project directory, you can run:
+**_Demo Account_**
+username:
+password:
 
-### `npm start`
+## Table of Contents
 
-Runs the app in the development mode.<br>
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+- [Tech Stack](#tech-stack)
+- [Screenshots](#screenshots)
+- [Description of Key Parts of Project](#key-parts)
+  - [Client Folder Structure](#client-folder-structure)
+  - [Server Folder Structure](#server-folder-structure)
+- [Future Features](#future-features)
+- [Feedback](#feedback)
 
-The page will reload if you make edits.<br>
-You will also see any lint errors in the console.
+## Tech Stack
 
-### `npm test`
+This project was built with the following:
 
-Launches the test runner in the interactive watch mode.<br>
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+- `React` for the frontend
+- `Redux` for state management
+- `Node` for the backend
+- `MongoDB` for the database
+- `JWTs` for authentication
 
-### `npm run build`
+## Screenshots
 
-Builds the app for production to the `build` folder.<br>
-It correctly bundles React in production mode and optimizes the build for the best performance.
+**_Home Page_**
+Entry point into the site
 
-The build is minified and the filenames include the hashes.<br>
-Your app is ready to be deployed!
+<!-- ![Home Page](./ss/home-page.png) -->
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+**_Sign Up_**
+Sign up form
 
-### `npm run eject`
+<!-- ![Sign up](./ss/sign-up.png) -->
 
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
+**_Login_**
+Login form
 
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+<!-- ![Login](./ss/log-in.png) -->
 
-Instead, it will copy all the configuration files and the transitive dependencies (Webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
+**_Dashboard Dock Navigation_**
+Navigation for the dashboard that allows the user to access the different views
 
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
+<!-- ![Dock Nav](./ss/dock-navigation.png) -->
 
-## Learn More
+**_Dashboard View_**
+The main dashboard page is where the user learns to read notes.
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+<!-- ![Calendar](./ss/calendar-view.png) -->
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+**_Progress View_**
+The progress page is where the user can review their progress, how many they've gotten right and wrong per each note.
+
+<!-- ![Dream Post](./ss/dream-post-view.png) -->
+
+## Description of Key Parts of Project
+
+-------------ADD DETAIL HERE --------------------
+
+<!-- The authorization and user creation happens in the auth and users actions and reducers connected to the signupForm and loginForm components and connected to their respective server side models. -->
+
+### Client Folder Structure
+
+```
+public/
+  favicon.ico
+  index.html
+  manifest.json
+  src/
+    __tests__
+    _actions/
+      auth-action.js
+      card-action.js
+      notes-action.js
+      users.action.js
+      utils.js
+    _components/
+      dashNavigation-component.js
+      feedback-component.js
+      input-component.js
+      key-component.js
+      keyboard-component.js
+      navigation-component.js
+      next-button-component.js
+      note-display-component.js
+      notifications-component.js
+      points-component.js
+    _containers/
+      dashboard-container.js
+      login-container.js
+      progress-container.js
+      signup-container.js
+    _images/
+      ledger.svg
+      note.png
+      quarter-note.svg
+      sheet.png
+      sheet2.png
+    _reducers/
+      auth.reducer.js
+      card-reducer.js
+      notes-reducer.js
+      points-reducer.js
+    pages/
+      home.js
+      not-found.js
+    utils/
+      sounds/
+        piano/
+          A.mp3
+          As-Bb.mp3
+          B.mp3
+          C.mp3
+          Cs-Db.mp3
+          D.mp3
+          Ds-Eb.mp3
+          E.mp3
+          F.mp3
+          Fs-Gb.mp3
+          G.mp3
+          Gs-Ab.mp3
+      shallowWithStore.js
+      sound-player.js
+      validators.js
+    App.css
+    App.js
+    config.js
+    index.css
+    index.js
+    logo.svg
+    store.js
+  eslintrc.json
+  ss/
+  package-lock.json
+  package.json
+  README.md
+```
+
+### Server Folder Structure
+
+```
+db/
+  data.js
+models/
+  card-model.js
+  user-model.js
+passport/
+  jwt-strategy.js
+  local-strategy.js
+routers/
+  auth-router.js
+  cards-router.js
+  users-router.js
+test/
+utils/
+  resetCards.js
+config.js
+db-mongoose.js
+index.js
+package-lock.json
+package.json
+Procfile
+README.md
+```
+
+## Future Features
+
+- Expand notes taught from just Major C to include other octaves and sharp/flat notes.
+
+## Feedback
+
+We are always open to [your feedback](https://github.com/clkent/dreams-client/issues) or feature requests. Thanks for checking out Noteful!
