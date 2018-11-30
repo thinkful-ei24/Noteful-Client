@@ -7,6 +7,8 @@ import Navigation from '../_components/navigation-component';
 import { login } from '../_actions/auth-action';
 
 require('./login-container.css');
+//TODO: move styles into styled components here
+// and finish CSS
 
 export function LoginForm(props) {
   let nav;

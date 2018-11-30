@@ -100,7 +100,6 @@ public/
       note.png
       quarter-note.svg
       sheet.png
-      sheet2.png
     _reducers/
       auth.reducer.js
       card-reducer.js

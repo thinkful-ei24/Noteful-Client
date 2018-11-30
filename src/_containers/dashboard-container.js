@@ -1,8 +1,6 @@
 import React from 'react';
 import { connect } from 'react-redux';
 
-import styled from 'styled-components';
-
 import DashNavigation from '../_components/dashNavigation-component';
 import Points from '../_components/points-component';
 import Keyboard from '../_components/keyboard-component';
@@ -14,9 +12,15 @@ import Notifications from '../_components/notifications-component';
 import { fetchNote } from '../_actions/notes-action';
 import { getCards } from '../_actions/card-actions';
 
-//Styles for Dash
+import grain from '../_images/grain.png';
+
+//-------------------------------------------------
+// STYLES
+// ------------------------------------------------
+import styled from 'styled-components';
+
 const DashboardContainer = styled.section`
-  background: #545559;
+  background-image: url(${grain});
   width: 100vw;
   max-width: 960px;
   position: relative;
@@ -29,7 +33,7 @@ const DashboardContainer = styled.section`
 
 const Info = styled.div`
   display: flex;
-  flex-direction: row;
+  flex-direction: column-reverse;
   justify-content: center;
   height: 100%;
   padding-top: 46px;
@@ -38,18 +42,41 @@ const Info = styled.div`
     display: flex;
     flex-direction: column;
   }
+
+  @media (min-width: 885px) {
+    flex-direction: row;
+    justify-content: center;
+
+    .right-side {
+      display: flex;
+      flex-direction: column;
+    }
+    button {
+      max-width: 58px;
+    }
+  }
 `;
 
 const Screen = styled.div`
   background: #1b1b1e;
-  border-radius: 4px;
-  width: 274px;
+  border-radius: 6px;
+  width: auto;
+  margin: 0 20px 20px 20px;
   height: 158px;
   border: 3px solid;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
+
+  @media (min-width: 885px) {
+    width: 274px;
+    margin: 0;
+  }
 `;
+
+//-------------------------------------------------
+// COMPONENT
+// ------------------------------------------------
 
 class Dashboard extends React.Component {
   async componentDidMount() {

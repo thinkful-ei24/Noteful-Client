@@ -1,10 +1,15 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import styled from 'styled-components';
 
 import { getCards } from '../_actions/card-actions';
 import DashNavigation from '../_components/dashNavigation-component';
 import placeholder from '../logo.svg';
+
+//-------------------------------------------------
+// STYLES
+// ------------------------------------------------
+
+import styled from 'styled-components';
 
 const ProgressContainer = styled.div`
   display: flex;
@@ -50,15 +55,18 @@ const ProgressNote = styled.div`
 // Display progress bar (green and red)
 const ProgressBar = styled.div`
   display: flex;
-  height: 30px;
+  height: 40px;
+  border-radius: 6px;
 
   .correct-bar {
     width: ${props => (props.incomplete ? 100 : props.correct)}%;
     background-color: ${props => (props.incomplete ? '#D8D8D8' : '#0FBF68')};
+    border-radius: 6px 0 0 6px;
   }
   .incorrect-bar {
     width: ${props => (props.incomplete ? 0 : props.incorrect)}%;
     background-color: #db3d0e;
+    border-radius: 0 6px 6px 0;
   }
 `;
 
@@ -74,6 +82,10 @@ const ProgressCount = styled.div`
     margin: 10px 0;
   }
 `;
+
+//-------------------------------------------------
+// COMPONENT
+// ------------------------------------------------
 
 class ProgressDisplay extends React.Component {
   componentDidMount() {
@@ -95,6 +107,7 @@ class ProgressDisplay extends React.Component {
         <ProgressNote id={`note-${card.note}`} key={index}>
           <ProgressHeader>
             <h2>{card.note}</h2>
+            {/* TODO: swap out placeholder image on progress */}
             <img src={placeholder} alt={`${card.note} note`} />
           </ProgressHeader>
           <ProgressBar

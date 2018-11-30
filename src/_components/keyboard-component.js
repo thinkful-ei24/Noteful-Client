@@ -98,14 +98,14 @@ const NaturalsContainer = styled.div`
   margin: 0 auto;
 
   button {
-    background: #fff;
+    background: #e8e7df;
     border: 1px solid #1b1b1e;
     border-radius: 0 0 6px 6px;
   }
 
   button:disabled,
   button:disabled p {
-    background: #e6e6e5;
+    background: #d4d4d4;
     color: #a09f98;
   }
 

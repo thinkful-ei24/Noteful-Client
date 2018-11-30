@@ -3,11 +3,15 @@ import { connect } from 'react-redux';
 
 import { getInitialPoints } from '../_actions/points-action';
 
+//-------------------------------------------------
+// STYLES
+// ------------------------------------------------
+
 import styled from 'styled-components';
 
 const PointsContainer = styled.div`
   text-align: center;
-  border: 1px solid #4fb7ec;
+  border: 1px solid #0fbf68;
   border-radius: 100px;
   font-family: omnes-pro, sans-serif;
   font-style: normal;
@@ -18,7 +22,7 @@ const PointsContainer = styled.div`
   margin-bottom: 20px;
 
   p {
-    color: #4fb7ec;
+    color: #0fbf68;
     font-weight: 600;
     font-size: 0.7em;
     text-transform: uppercase;
@@ -34,6 +38,10 @@ const PointsContainer = styled.div`
     line-height: 0.85em;
   }
 `;
+
+//-------------------------------------------------
+// COMPONENT
+// ------------------------------------------------
 
 class Points extends React.Component {
   componentDidMount() {

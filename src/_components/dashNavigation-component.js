@@ -7,6 +7,10 @@ import { clearPoints } from '../_actions/points-action';
 import { clearNote } from '../_actions/notes-action';
 import { clearCard } from '../_actions/card-actions';
 
+//-------------------------------------------------
+// STYLES
+// ------------------------------------------------
+
 import styled from 'styled-components';
 
 const NavigationContainer = styled.nav`
@@ -60,6 +64,7 @@ const NavigationContainer = styled.nav`
     font-size: 0.75em;
     letter-spacing: 2px;
     font-weight: 600;
+    min-width: 89px;
   }
 
   button:active,
@@ -67,6 +72,10 @@ const NavigationContainer = styled.nav`
     outline: #f6f6f0;
   }
 `;
+
+//-------------------------------------------------
+// COMPONENT
+// ------------------------------------------------
 
 const DashNavigation = props => {
   if (!localStorage.getItem('authToken')) {
