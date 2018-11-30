@@ -2,10 +2,13 @@ import React from 'react';
 import { connect } from 'react-redux';
 import { fetchNote, updateKeyboard, selectKey } from '../_actions/notes-action';
 
+//-------------------------------------------------
+// STYLES
+// ------------------------------------------------
+
 import styled from 'styled-components';
 
 const NextBtn = styled.button`
-  margin: 10px 0;
   height: 43px;
   border: 2px solid #1b1b1e;
   border-radius: 28px;
@@ -14,12 +17,12 @@ const NextBtn = styled.button`
   text-transform: uppercase;
   font-size: 0.75em;
   letter-spacing: 2px;
-  align-self: flex-end;
   padding: 0px 22px;
   font-weight: 600;
+  margin: 0 20px 20px 20px;
 
   :disabled {
-    background: #545559;
+    background: transparent;
     border: 2px solid #3d3e40;
     color: #3d3e40;
   }
@@ -27,7 +30,15 @@ const NextBtn = styled.button`
   :focus {
     outline: #545559;
   }
+  @media (min-width: 885px) {
+    margin: 10px 0;
+    max-width: 100% !important;
+  }
 `;
+
+//-------------------------------------------------
+// COMPONENT
+// ------------------------------------------------
 
 const NextButton = props => {
   //logic for displaying the next button
