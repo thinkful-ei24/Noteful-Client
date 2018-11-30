@@ -8,12 +8,6 @@ const InputComponent = styled.nav`
   }
 
   #err-icon {
-    color: orangered;
-    font-size: 18px;
-    margin-right: 5px;
-  }
-
-  #warn-icon {
     color: goldenrod;
     font-size: 18px;
     margin-right: 5px;
@@ -39,7 +33,7 @@ export default class Input extends React.Component {
     let warning;
     if (this.props.meta.touched && this.props.meta.warning) {
       warning = <div className="form-warning">
-        <i class="fas fa-exclamation-triangle" id="warn-icon"></i>
+        <i class="fas fa-exclamation-triangle" id="err-icon"></i>
         {this.props.meta.warning}
       </div>;
     }

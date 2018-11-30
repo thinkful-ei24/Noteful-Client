@@ -31,6 +31,7 @@ const FormContainer = styled.nav`
   }
 
   label {
+    color: white;
     display: block;
     font-size: 22px;
     margin: 25px 0 6px 0;
