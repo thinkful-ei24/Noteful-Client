@@ -4,7 +4,6 @@ import { Link } from 'react-router-dom';
 import { Redirect } from 'react-router-dom';
 
 import Navigation from '../_components/navigation-component';
-import Keyboard from '../_components/keyboard-component';
 import Footer from '../_components/footer-component';
 
 import sheetMusic from '../_images/sheet.png';

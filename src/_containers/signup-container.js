@@ -3,7 +3,6 @@ import { Field, reduxForm, focus } from 'redux-form';
 import { connect } from 'react-redux';
 import { Redirect } from 'react-router-dom';
 
-import styled from 'styled-components';
 import Navigation from '../_components/navigation-component';
 
 import { signUpUser } from '../_actions/users-action';
@@ -23,7 +22,6 @@ import FormContainer from './form-styles';
 // ------------------------------------------------
 
 const passwordLength = length({ min: 10, max: 72 });
-
 
 export function SignUpForm(props) {
   if (props.loggedIn) {

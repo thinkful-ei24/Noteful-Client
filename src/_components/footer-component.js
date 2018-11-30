@@ -32,8 +32,15 @@ export default function Footer() {
     <React.Fragment>
       <FooterContainer>
         <p>
-          made w/ 🦄&amp; {'  '}☕️ by{' '}
-          <a href="https://github.com/kenttoku">Kent</a>,{'  '}
+          made w/{' '}
+          <span role="img" aria-label="unicorn emoji">
+            🦄
+          </span>{' '}
+          &amp; {'  '}
+          <span role="img" aria-label="coffee emoji">
+            ☕️
+          </span>{' '}
+          by <a href="https://github.com/kenttoku">Kent</a>,{'  '}
           <a href="https://github.com/clkent">Chelsea</a>, &amp; {'  '}
           <a href="https://github.com/slupton89">Shane</a>
         </p>
