@@ -1,0 +1,15 @@
+language: node_js
+node_js: node
+cache:
+  directories:
+  - node_modules
+env:
+- CI=true
+deploy:
+  provider: heroku
+  api_key:
+    secure: xQHLPjEHYNHIBiN4PDer8OeaEOaecbzPjNe754MhWwl1sOqBTeIam1Xb0DtJPUp1wug9NlS3Dx2nvBnggIEy8XG/BVRTAVXV3PCul30WV5ozr8idssXgT5f5a66yv5B/RWAJygnWDOc8KciDEL72/x/vuNiGz7lCK5kvVvKQ/O5zFiIFw0UAC9hwlWJeUIXYirXf6S4nQUPk9zxYeUuXDJJeus3f8W0pZhRhR4lrTsuo3Z6gYanxANqRcDzNXkMn6wYc+G/5nrThvG4Dc8ZpQgH5JiDzTVvXUzLmUyDdX/ULsXhY86Fa/JrdIVBT+Csq46VhUTwc2sYlJ0JjJZtc/nZ+/h72dhF1tGgnYTGU8SOPLhsbAFUPFku0ckkxpo3JA2KCGbFQJ5wesgpxQzRSZl3di0ZZOMtufV7CvmAlDuXCtTgNY6M7T5HERu1msRT8hzwonTVHR00c6gbhjNxxay9LlK6vmoQJFbz70mXKELaYEIxSCo9Dq+NHnfu8rUmcAv1KI6KGOMcIoHSOd/mdCGr285Uvz76loAjhxrBbuiujRTWj4jAmyiepVe5I72AjkJTafU4itDX14VIEbYmJftmCLysSjlkKVtyMPDzgj7LPlEMvTp5oKkB3aiE9I9DXYxGTHLIi1tmKbxe/WF304QqAHlOxp3qw9UyV8tMI4Ys=
+  app: Noteful-Client
+  on:
+    repo: thinkful-ei24/Noteful-Client
+    branch: master

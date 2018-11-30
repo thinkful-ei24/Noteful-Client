@@ -15,82 +15,113 @@ import {
 
 import Key from './key-component';
 
+//----------------------------------------------
+// STYLES
+//----------------------------------------------
+
 import styled from 'styled-components';
 
-const AccidentalsContainer = styled.div`
-  position: relative;
-  display: flex;
-  max-width: 750px;
+const KeyboardContainer = styled.div`
+  max-width: 840px;
   height: 300px;
   margin: 0 auto;
+  border: 3px solid #1b1b1e;
+  border-radius: 6px 6px 0 0;
 
-  .key {
-    display: flex;
-  }
-
-  .key--accidental.C {
-    left: 84px;
-  }
-  .key--accidental.D {
-    left: 191px;
-  }
-  .key--accidental.F {
-    left: 407px;
-  }
-  .key--accidental.G {
-    left: 513px;
-  }
-  .key--accidental.A {
-    left: 619px;
-  }
-  .key--accidental {
-    background: #1b1b1e;
-    color: #1b1b1e;
-    border: 1px solid #fff;
-    border-top: 1px solid transparent;
-    border-radius: 0 0 4px 4px;
+  button {
     cursor: pointer;
-    height: 66%;
-    z-index: 1;
-    position: absolute;
-    top: 0;
-    width: 46px;
-    border: none !important;
-  }
-`;
-
-const KeyboardContainer = styled(AccidentalsContainer)`
-  border: 4px solid #1b1b1e;
-  border-radius: 6px 6px 0px 0px;
-  border-bottom: none;
-  border-top: 1px solid #1b1b1e;
-
-  .key {
-    display: flex;
-    border: 3px solid #fff;
-    border-top: none;
   }
 
-  .key--natural {
-    background: #fff;
-    border: 1px solid #1b1b1e;
-    border-radius: 0 0 6px 6px;
-    cursor: pointer;
-    z-index: 0;
-    flex: 1;
-    margin-right: 1px;
-  }
-
-  .key--natural:last-child {
-    margin-right: 0;
-  }
-
-  .key:focus,
-  .key:active {
+  button:focus {
     border: 3px solid #4fb7ec;
     outline: rgba(225, 225, 225, 0);
   }
 `;
+
+const AccidentalsContainer = styled.div`
+  max-width: 840px;
+  display: grid;
+  grid-template-columns: repeat(42, 1fr);
+  height: 66%;
+  justify-items: center;
+  margin: 0 auto;
+
+  button {
+    max-width: 46px;
+    background: #1b1b1e;
+    border: 1px solid #fff;
+    border-radius: 0 0 4px 4px;
+    cursor: pointer;
+    top: -299px;
+    position: relative;
+    z-index: 1;
+    border-top: none;
+  }
+
+  button.C {
+    grid-column: 6 / span 2;
+  }
+
+  button.D {
+    grid-column: 12 / span 3;
+  }
+
+  button.F {
+    grid-column: 25 / span 2;
+  }
+
+  button.G {
+    grid-column: 31 / span 2;
+  }
+
+  button.A {
+    grid-column: 37 / span 1;
+  }
+
+  button:disabled p,
+  button p {
+    color: #1b1b1e;
+  }
+
+  @media (min-width: 545px) {
+    button {
+      max-width: 58px;
+    }
+  }
+`;
+
+const NaturalsContainer = styled.div`
+  max-width: 840px;
+  display: grid;
+  grid-template-columns: repeat(7, 1fr);
+  height: 300px;
+  margin: 0 auto;
+
+  button {
+    background: #e8e7df;
+    border: 1px solid #1b1b1e;
+    border-radius: 0 0 6px 6px;
+  }
+
+  button:disabled,
+  button:disabled p {
+    background: #d4d4d4;
+    color: #a09f98;
+  }
+
+  p {
+    font-size: 1.75em;
+    top: 100px;
+    position: relative;
+    text-shadow: 0 1px 1px rgba(255, 255, 255, 0.9),
+      0 -1px 1px rgba(0, 0, 0, 0.1);
+    color: #1b1b1e;
+  }
+`;
+
+//----------------------------------------------
+// COMPONENT
+//----------------------------------------------
 
 class Keyboard extends React.Component {
   componentDidMount() {
@@ -130,12 +161,25 @@ class Keyboard extends React.Component {
     let accidentals = ['C#/Db', 'D#/Eb', 'F#/Gb', 'G#/Ab', 'A#/Bb'];
     return (
       <KeyboardContainer>
+        <NaturalsContainer>
+          {keys.map(note => {
+            return (
+              <Key
+                key={note}
+                note={note}
+                selectedKey={this.handleSelectedKey}
+                keyboardDisabled={this.props.keyboardDisabled}
+              />
+            );
+          })}
+        </NaturalsContainer>
+
         <AccidentalsContainer>
           {accidentals.map(note => {
             return (
               <Key
                 key={note}
-                class={`key key--accidental ${note[0]}`}
+                class={`${note[0]}`}
                 note={note}
                 selectedKey={this.handleSelectedKey}
                 keyboardDisabled={this.props.keyboardDisabled}
@@ -143,18 +187,6 @@ class Keyboard extends React.Component {
             );
           })}
         </AccidentalsContainer>
-
-        {keys.map(note => {
-          return (
-            <Key
-              key={note}
-              class={'key key--natural'}
-              note={note}
-              selectedKey={this.handleSelectedKey}
-              keyboardDisabled={this.props.keyboardDisabled}
-            />
-          );
-        })}
       </KeyboardContainer>
     );
   }

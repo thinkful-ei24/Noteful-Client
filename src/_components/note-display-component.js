@@ -1,30 +1,49 @@
 import React from 'react';
 
-import staff from '../_images/sheet2.png';
+import staff from '../_images/sheet-b.png';
 // import note from '../_images/note.png';
 import note from '../_images/quarter-note.svg';
 import ledger from '../_images/ledger.svg';
 import { playSound } from '../utils/sound-player';
 
+//-------------------------------------------------
+// STYLES
+// ------------------------------------------------
+
 import styled from 'styled-components';
 
 const NoteDisplayContainer = styled.div`
-  width: 531px;
-  height: 211px;
+  width: 289px;
+  height: 121px;
   padding: 0px 25px 0 20px;
-  margin: 0px 28px 28px 0;
-  background: #f6f6f0;
-  border-radius: 6px;
-  border: 3px solid #1b1b1e;
+  margin: 20px auto;
+  background: #1b1b1e;
+  border-radius: 16px;
+  border: 3px solid;
 
   #sheet-img {
-    width: 535px;
+    width: 300px;
   }
 
   #note-img {
     position: relative;
-    height: 100px;
-    left: 205px;
+    height: 80px;
+    left: 115px;
+  }
+
+  @media (min-width: 885px) {
+    width: 531px;
+    height: 211px;
+    margin: 0px 28px 28px 0;
+
+    #sheet-img {
+      width: 531px;
+    }
+    #note-img {
+      position: relative;
+      height: 110px;
+      left: 205px;
+    }
   }
 `;
 
@@ -41,16 +60,21 @@ const Ledger = styled.img`
   z-index: 1;
 `;
 
+//-------------------------------------------------
+// COMPONENT
+// ------------------------------------------------
+
+//FIXME: finish responsive styles and notes positioning on mobile
 export default function NoteDisplay(props) {
   // list of note positions
   const notes = {
-    A: 186,
-    B: 203,
-    C: 103,
-    D: 120,
-    E: 135,
-    F: 151,
-    G: 168
+    A: 192,
+    B: 211,
+    C: 111,
+    D: 125,
+    E: 142,
+    F: 159,
+    G: 176
   };
   let lastNote = '';
   const updateNote = value => {
@@ -64,7 +88,7 @@ export default function NoteDisplay(props) {
 
   const ledgerDisplay =
     props.note === 'C' ? (
-      <Ledger src={ledger} alt="ledger" style={{ bottom: 131 }} />
+      <Ledger src={ledger} alt="ledger" style={{ bottom: 141 }} />
     ) : (
       ''
     );

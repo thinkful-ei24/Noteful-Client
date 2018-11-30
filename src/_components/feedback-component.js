@@ -1,6 +1,10 @@
 import React from 'react';
 import { connect } from 'react-redux';
 
+//-------------------------------------------------
+// STYLES
+// ------------------------------------------------
+
 import styled from 'styled-components';
 
 const FeedbackContainer = styled.div`
@@ -16,8 +20,11 @@ const FeedbackContainer = styled.div`
   }
 `;
 
-export class Feedback extends React.Component {
+//-------------------------------------------------
+// COMPONENT
+// ------------------------------------------------
 
+export class Feedback extends React.Component {
   //Logic for feedback content and points count
   //based on user selecting the correct or incorrect key
   render() {
