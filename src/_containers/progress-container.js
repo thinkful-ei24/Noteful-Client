@@ -4,13 +4,13 @@ import { connect } from 'react-redux';
 import { getCards } from '../_actions/card-actions';
 import DashNavigation from '../_components/dashNavigation-component';
 
-import aImg from '../_images/A-sm.png';
-import bImg from '../_images/B-sm.png';
-import cImg from '../_images/C-sm.png';
-import dImg from '../_images/D-sm.png';
-import eImg from '../_images/E-sm.png';
-import fImg from '../_images/F-sm.png';
-import gImg from '../_images/G-sm.png';
+import aImg from '../_images/A-sm.svg';
+import bImg from '../_images/B-sm.svg';
+import cImg from '../_images/C-sm.svg';
+import dImg from '../_images/D-sm.svg';
+import eImg from '../_images/E-sm.svg';
+import fImg from '../_images/F-sm.svg';
+import gImg from '../_images/G-sm.svg';
 // ------------------------------------------------
 // STYLES
 // ------------------------------------------------
@@ -23,6 +23,7 @@ const ProgressContainer = styled.main`
   max-width: 960px;
   margin: 0 auto;
   margin-bottom: 50px;
+  margin-top: 80px;
 `;
 
 const ProgressHeader = styled.div`
@@ -66,12 +67,12 @@ const ProgressBar = styled.div`
   .correct-bar {
     width: ${props => (props.incomplete ? 100 : props.correct)}%;
     background-color: ${props => (props.incomplete ? '#D8D8D8' : '#0FBF68')};
-    border-radius: ${props => props.incorrect ? '6px 0 0 6px' : '6px'}
+    border-radius: ${props => (props.incorrect ? '6px 0 0 6px' : '6px')};
   }
   .incorrect-bar {
     width: ${props => (props.incomplete ? 0 : props.incorrect)}%;
     background-color: #db3d0e;
-    border-radius: ${props => props.correct ? '0 6px 6px 0' : '6px'};
+    border-radius: ${props => (props.correct ? '0 6px 6px 0' : '6px')};
   }
 `;
 
