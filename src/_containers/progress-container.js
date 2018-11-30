@@ -3,9 +3,15 @@ import { connect } from 'react-redux';
 
 import { getCards } from '../_actions/card-actions';
 import DashNavigation from '../_components/dashNavigation-component';
-import placeholder from '../logo.svg';
 
-//-------------------------------------------------
+import aImg from '../_images/A-sm.png';
+import bImg from '../_images/B-sm.png';
+import cImg from '../_images/C-sm.png';
+import dImg from '../_images/D-sm.png';
+import eImg from '../_images/E-sm.png';
+import fImg from '../_images/F-sm.png';
+import gImg from '../_images/G-sm.png';
+// ------------------------------------------------
 // STYLES
 // ------------------------------------------------
 
@@ -30,10 +36,9 @@ const ProgressHeader = styled.div`
   }
 
   img {
-    width: auto;
-    height: 80px;
     margin: 0;
     align-self: flex-end;
+    margin-bottom: 10px;
   }
 `;
 
@@ -86,6 +91,15 @@ const ProgressCount = styled.div`
 //-------------------------------------------------
 // COMPONENT
 // ------------------------------------------------
+const progressImg = {
+  A: aImg,
+  B: bImg,
+  C: cImg,
+  D: dImg,
+  E: eImg,
+  F: fImg,
+  G: gImg
+};
 
 class ProgressDisplay extends React.Component {
   componentDidMount() {
@@ -108,7 +122,7 @@ class ProgressDisplay extends React.Component {
           <ProgressHeader>
             <h2>{card.note}</h2>
             {/* TODO: swap out placeholder image on progress */}
-            <img src={placeholder} alt={`${card.note} note`} />
+            <img src={progressImg[card.note]} alt={`${card.note} note`} />
           </ProgressHeader>
           <ProgressBar
             correct={correctSize}
