@@ -13,6 +13,11 @@ import Input from '../_components/input-component';
 import { required, nonEmpty, length, isTrimmed } from '../utils/validators';
 const passwordLength = length({ min: 10, max: 72 });
 
+
+//-------------------------------------------------
+// STYLES
+// ------------------------------------------------
+
 const SignupContainer = styled.nav`
     width: 350px;
     margin-left: auto;
@@ -37,6 +42,13 @@ const SignupContainer = styled.nav`
     border: 1px solid black;
     border-radius: 5px;
     font-size: 18px;
+  }
+
+  input:-webkit-autofill,
+  input:-webkit-autofill:hover,
+  input:-webkit-autofill:focus,
+  input:-webkit-autofill:active  {
+      -webkit-box-shadow: 0 0 0 30px white inset;
   }
 
   label {
@@ -88,6 +100,10 @@ const SignupContainer = styled.nav`
     top:1px;
   }
 `;
+
+//-------------------------------------------------
+// COMPONENT
+// ------------------------------------------------
 
 export function SignUpForm(props) {
   if (props.loggedIn) {
