@@ -18,9 +18,7 @@ export class Notifications extends React.Component {
     if (this.props.loggedIn) {
       this.props.dispatch(
         notifSend({
-          message: `Hello there, ${
-            this.props.user.name
-          }. Welcome back to Noteful.`,
+          message: `Hello there, ${this.props.user.name}. Welcome to Noteful.`,
           kind: 'info',
           dismissAfter: 4000
         })
