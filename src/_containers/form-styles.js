@@ -56,6 +56,12 @@ const FormContainer = styled.nav`
     top: 1px;
   }
 
+  input:focus,
+  input:active,
+  input:hover {
+    outline-color: #4FB7EC;
+  }
+  input:-webkit-autofill:focus
   input:-webkit-autofill,
   input:-webkit-autofill:hover,
   input:-webkit-autofill:focus,
