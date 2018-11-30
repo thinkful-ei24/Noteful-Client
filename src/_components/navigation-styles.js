@@ -74,7 +74,7 @@ const NavigationContainer = styled.nav`
   }
 
   @media (min-width: 885px) {
-    grid-template-columns: 10fr 1fr 1fr;
+    grid-template-columns: 6fr 1fr 1fr;
     padding-top: 20px;
 
     .logo {

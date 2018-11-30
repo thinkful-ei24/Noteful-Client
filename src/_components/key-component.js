@@ -4,6 +4,7 @@ import { playSound } from '../utils/sound-player';
 
 const Key = props => {
   let note = props.note;
+
   return (
     <button
       className={props.class}
