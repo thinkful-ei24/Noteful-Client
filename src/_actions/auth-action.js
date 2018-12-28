@@ -99,3 +99,12 @@ export const login = values => dispatch => {
       }
     });
 };
+
+export const demoUser = () => (dispatch) => {
+  return fetch(`${API_BASE_URL}/auth/demo`, {
+    method: 'POST',
+  })
+    .then(res => res.json())
+    .then(({ authToken }) => storeAuthToken(authToken, dispatch))
+    .catch(() => dispatch(clearAuthToken()));
+};

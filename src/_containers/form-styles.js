@@ -14,6 +14,10 @@ const FormContainer = styled.nav`
   border-radius: 16px;
   box-shadow: 3px 3px 0px 0px #1b1b1e;
 
+  .demo-link {
+    color: #fff;
+  }
+  
   #username,
   #password,
   #name {

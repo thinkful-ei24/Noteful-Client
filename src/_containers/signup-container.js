@@ -6,7 +6,7 @@ import { Redirect } from 'react-router-dom';
 import Navigation from '../_components/navigation-component';
 
 import { signUpUser } from '../_actions/users-action';
-import { login } from '../_actions/auth-action';
+import { login, demoUser } from '../_actions/auth-action';
 
 import Input from '../_components/input-component';
 import { required, nonEmpty, length, isTrimmed } from '../utils/validators';
@@ -75,6 +75,7 @@ export function SignUpForm(props) {
             Sign up
           </button>
         </form>
+        <a onClick={() => props.dispatch(demoUser())} className="demo-link" href="#">Login with demo account</a>
       </FormContainer>
     </React.Fragment>
   );
