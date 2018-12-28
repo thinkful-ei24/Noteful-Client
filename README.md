@@ -3,8 +3,9 @@ Learn to read music!
 [Noteful](https://learn-noteful.herokuapp.com/)
 
 **_Demo Account_**
-username:
-password:
+
+username: demouser  
+password: demopass123  
 
 ## Table of Contents
 
